@@ -1,5 +1,7 @@
 .DS_STORE
 
+*.swp
+
 **/project.xcworkspace
 **/xcuserdata
 Pods
