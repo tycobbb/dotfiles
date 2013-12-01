@@ -1,0 +1,49 @@
+[user]
+
+	name = Ty Cobb
+	email = tcobb@roundarch.com
+
+[alias]
+
+	alias = !git config --list | grep 'alias\\.' | sed 's/alias\\.\\([^=]*\\)=\\(.*\\)/\\1\t=> \\2/' | sort
+
+	st = status
+	lyd = log --since='yesterday' --author='Ty Cobb'
+
+	ci = commit
+	cim = commit -m
+
+	br = branch
+	dbr = branch -d
+	dwb = branch -D work_branch
+
+	co = checkout
+	cbr = checkout -b
+	cwb = checkout -b work_branch
+
+	rb = rebase
+	rbm = rebase master
+
+	mwb = merge work_branch
+	rmc = rm --cached
+
+	srb = svn rebase
+	sdc = svn dcommit
+
+	pullm = pull origin master
+	pushm = push origin master
+
+	ulc = reset --soft HEAD^
+  count = rev-list HEAD --count
+  
+	sync = !zsh ~/Dropbox/scripts/git_commit.zsh
+	syncp = !zsh ~/Dropbox/scripts/git_commit.zsh --push
+	ssync = !zsh ~/Dropbox/scripts/git_commit.zsh --svn
+	ssyncp = !zsh ~/Dropbox/scripts/git_commit.zsh --svn --push 
+
+[core]
+	excludesfile = /Users/tcobb/.gitignore
+
+[push]
+	default = nothing
+
