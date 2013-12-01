@@ -29,6 +29,7 @@ declare -a exclusions=(
   '.git'
   'link_configs.sh'
   'link_configs.sh.swp'
+  '.DS_Store'
 )
 
 home_directory="$HOME/"
