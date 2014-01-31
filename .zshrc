@@ -3,15 +3,15 @@
 ZSH=$HOME/.oh-my-zsh
 
 # theme
-ZSH_THEME="gozilla" # "cloud" # "ty" # "kolo"
+ZSH_THEME="ty" # "kolo"
 
 # plugins (sourced from: ~/.oh-my-zsh/plugins/*)
 plugins=(git rails ruby rvm rake gem osx brew gitfast)
 
 # aliases
-alias zshrc='vi ~/.zshrc'
-alias gitrc='vi ~/.gitconfig'
-alias vimrc='vi ~/.vimrc'
+alias zshrc='vim ~/.zshrc'
+alias gitrc='vim ~/.gitconfig'
+alias vimrc='vim ~/.vimrc'
 alias zshreload='source ~/.zshrc'
 
 alias ls='ls -a -G'
@@ -29,7 +29,7 @@ COMPLETION_WAITING_DOTS="true"
 source $ZSH/oh-my-zsh.sh
 
 # path configuration
-export PATH=/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:$HOME/bin:$HOME/.rvm/bin:/usr/local/share/npm/bin
+export PATH=/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:$HOME/bin:$HOME/.rvm/bin:/usr/local/share/npm/bin:$HOME/Dropbox/scripts/bin
 
 # optional paths
 #   postgres dump: /Applications/Postgres.app/Contents/MacOS/bin/

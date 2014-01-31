@@ -8,7 +8,9 @@
 	alias = !git config --list | grep 'alias\\.' | sed 's/alias\\.\\([^=]*\\)=\\(.*\\)/\\1\t=> \\2/' | sort
 
 	st = status
-	lyd = log --since='yesterday' --author='Ty Cobb'
+	lg = log --color
+  lgnm = log --color --no-merges
+  lgs = "!zsh -c 'git log --color --since=$0.days --author=\"Ty Cobb\"'"
 
 	ci = commit
 	cim = commit -m
@@ -40,6 +42,15 @@
 	syncp = !zsh ~/Dropbox/scripts/git_commit.zsh --push
 	ssync = !zsh ~/Dropbox/scripts/git_commit.zsh --svn
 	ssyncp = !zsh ~/Dropbox/scripts/git_commit.zsh --svn --push 
+
+[color]
+  status = auto
+
+[color "status"]
+  branch = yellow
+  added = yellow
+  changed = dim cyan
+  untracked = dim white
 
 [core]
 	excludesfile = /Users/tcobb/.gitignore
