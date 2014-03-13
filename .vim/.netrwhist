@@ -1,5 +1,5 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =8
+let g:netrw_dirhist_cnt =9
 let g:netrw_dirhist_1='/Users/tcobb/.oh-my-zsh'
 let g:netrw_dirhist_2='/Users/tcobb/.cocoapods/mtvn/VMNSocialMedia-iOS-SDK/1.2.0'
 let g:netrw_dirhist_3='/Users/tcobb/.ssh'
@@ -8,3 +8,4 @@ let g:netrw_dirhist_5='/Users/tcobb/Work/Projects/CCNetwork/Repo/CCNetworkIOS/.g
 let g:netrw_dirhist_6='/Users/tcobb/.vim'
 let g:netrw_dirhist_7='/Users/ty/Documents/dfw/catplanet.cat'
 let g:netrw_dirhist_8='/Users/ty/Dropbox/projects/Timely/.git'
+let g:netrw_dirhist_9='/Users/ty/Dropbox/projects/Cellar/cellar/server'

@@ -14,7 +14,7 @@ alias gitrc='vim ~/.gitconfig'
 alias vimrc='vim ~/.vimrc'
 alias zshreload='source ~/.zshrc'
 
-alias ls='ls -a -G'
+alias lsh='ls -a'
 alias lsl='ls -l -G'
 alias ps='ps -xva'
 

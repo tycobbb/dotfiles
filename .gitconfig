@@ -1,29 +1,29 @@
 [user]
 
-	name = Ty Cobb
+	name  = Ty Cobb
 	email = tcobb@roundarch.com
 
 [alias]
 
 	alias = !git config --list | grep 'alias\\.' | sed 's/alias\\.\\([^=]*\\)=\\(.*\\)/\\1\t=> \\2/' | sort
 
-	st = status
-	lg = log --color
+	st   = status
+	lg   = log --color
   lgnm = log --color --no-merges
-  lgs = "!zsh -c 'git log --color --since=$0.days --author=\"Ty Cobb\"'"
+  lgs  = "!zsh -c 'git log --color --since=$0.days --author=\"Ty Cobb\"'"
 
-	ci = commit
+	ci  = commit
 	cim = commit -m
 
-	br = branch
+	br  = branch
 	dbr = branch -d
 	dwb = branch -D work_branch
 
-	co = checkout
+	co  = checkout
 	cbr = checkout -b
 	cwb = checkout -b work_branch
 
-	rb = rebase
+	rb  = rebase
 	rbm = rebase master
 
 	mwb = merge work_branch
@@ -35,21 +35,27 @@
 	pullm = pull origin master
 	pushm = push origin master
 
-	ulc = reset --soft HEAD^
+	ulc   = reset --soft HEAD^
   count = rev-list HEAD --count
   
-	sync = !zsh ~/Dropbox/scripts/git_commit.zsh
-	syncp = !zsh ~/Dropbox/scripts/git_commit.zsh --push
-	ssync = !zsh ~/Dropbox/scripts/git_commit.zsh --svn
+	sync   = !zsh ~/Dropbox/scripts/git_commit.zsh
+	syncp  = !zsh ~/Dropbox/scripts/git_commit.zsh --push
+	ssync  = !zsh ~/Dropbox/scripts/git_commit.zsh --svn
 	ssyncp = !zsh ~/Dropbox/scripts/git_commit.zsh --svn --push 
 
 [color]
-  status = auto
 
+  diff   = auto
+  status = auto
+  branch = auto
+  ui     = true
+  pager  = true  
+  interactive = auto
+ 
 [color "status"]
-  branch = yellow
-  added = yellow
-  changed = dim cyan
+  branch    = yellow
+  added     = yellow
+  changed   = dim cyan
   untracked = dim white
 
 [core]

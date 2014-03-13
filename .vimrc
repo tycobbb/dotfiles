@@ -1,3 +1,4 @@
+
 "" PATHOGEN ""
 execute pathogen#infect()
 
@@ -15,6 +16,18 @@ colorscheme desert
 au BufRead,BufNewFile Podfile,Gemfile set filetype=ruby
 au BufRead,BufNewFile *.json set filetype=javascript
 au BufRead,BufNewFile *.zsh-theme set filetype=sh
+
+""
+"" KEYBINDINGS ""
+""
+imap <Up>    <NOP>
+imap <Down>  <NOP>
+imap <Left>  <NOP>
+imap <Right> <NOP>
+map  <Up>    <NOP>
+map  <Down>  <NOP>
+map  <Left>  <NOP>
+map  <Right> <NOP>
 
 ""
 "" INDENTATION ""
