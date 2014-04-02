@@ -29,7 +29,7 @@ COMPLETION_WAITING_DOTS="true"
 source $ZSH/oh-my-zsh.sh
 
 # path configuration
-export PATH=/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:$HOME/bin:$HOME/.rvm/bin:/usr/local/share/npm/bin:$HOME/Dropbox/scripts/bin
+export PATH=$PATH:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:$HOME/bin:$HOME/.rvm/bin:/usr/local/share/npm/bin:$HOME/Dropbox/scripts/bin
 
 # optional paths
 #   postgres dump: /Applications/Postgres.app/Contents/MacOS/bin/

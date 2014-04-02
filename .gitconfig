@@ -1,7 +1,7 @@
 [user]
 
 	name  = Ty Cobb
-	email = tcobb@roundarch.com
+	email = ty.cobb.m@gmail.com
 
 [alias]
 
@@ -59,7 +59,7 @@
   untracked = dim white
 
 [core]
-	excludesfile = /Users/tcobb/.gitignore
+	excludesfile = ~/.gitignore_global
 
 [push]
 	default = nothing

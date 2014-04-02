@@ -28,6 +28,7 @@ declare -a exclusions=(
   '..'
   '.git'
   '.gitmodules'
+  '.gitignore'
   'link_configs.sh'
   'link_configs.sh.swp'
   '.DS_Store'
