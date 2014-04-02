@@ -3,7 +3,7 @@
 ZSH=$HOME/.oh-my-zsh
 
 # theme
-ZSH_THEME="ty" # "kolo"
+ZSH_THEME="kolo" # "ty"
 
 # plugins (sourced from: ~/.oh-my-zsh/plugins/*)
 plugins=(git rails ruby rvm rake gem osx brew gitfast)
