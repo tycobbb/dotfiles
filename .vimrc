@@ -11,6 +11,11 @@ syntax enable
 colorscheme desert
 
 ""
+"" -- vim-less ""
+""
+noremap <Leader>m :w <BAR> !lessc % > %:t:r.css<CR><space>
+
+""
 "" -- filetype exceptions ""
 ""
 au BufRead,BufNewFile Podfile,Gemfile set filetype=ruby
@@ -40,24 +45,44 @@ set expandtab
 set nowrap
 
 ""
-"" SPLITTING
+"" SPLITTING ""
 ""
 set splitbelow
 set splitright
 
 ""
-"" LINE NUMBERS
+"" LINE NUMBERS ""
 ""
 set number
 :au WinEnter * :setlocal number
 :au WinLeave * :setlocal nonumber
 
 ""
-"" BACKUP/UNDO
+"" BACKUP/UNDO ""
 ""
 set backupdir=~/.vim/backup,/tmp
 set backup
 
 set undodir=~/.vim/undodir
 set undofile
+
+""
+"" AUTOCOMPLETE ""
+""
+"" -- omnicompletion ""
+""
+filetype plugin on
+set omnifunc=syntaxcomplete#Complete
+
+
+""
+"" -- supertab ""
+""
+let g:SuperTabDefaultCompletionType = "context"
+
+""
+"" -- closetag ""
+""
+autocmd FileType html let b:closetag_html_style=1
+autocmd FileType html source ~/.vim/bundle/closetag.vim/plugin/closetag.vim
 
