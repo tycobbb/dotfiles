@@ -16,6 +16,7 @@ colorscheme desert
 au BufRead,BufNewFile Podfile,Gemfile set filetype=ruby
 au BufRead,BufNewFile *.json set filetype=javascript
 au BufRead,BufNewFile *.zsh-theme set filetype=sh
+au BufRead,BufNewFile *.less set filetype=css
 
 ""
 "" KEYBINDINGS ""
