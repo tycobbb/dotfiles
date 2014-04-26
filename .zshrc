@@ -6,7 +6,7 @@ ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="kolo" # "ty"
 
 # plugins (sourced from: ~/.oh-my-zsh/plugins/*)
-plugins=(git rails ruby rvm rake gem osx brew gitfast)
+plugins=(git rails ruby rvm rake gem osx brew gitfast vi-mode)
 
 # aliases
 alias zshrc='vim ~/.zshrc'
@@ -23,6 +23,9 @@ alias sftp-cc='sftp txcobb@162.248.10.45'
 alias ssh-ec2='ssh -i ~/.ssh/tyserv.pem ubuntu@ec2-50-112-12-98.us-west-2.compute.amazonaws.com'
 alias sftp-ec2='sftp -i ~/.ssh/tyserv.pem ubuntu@ec2-50-112-12-98.us-west-2.compute.amazonaws.com'
 
+# keybindings
+bindkey -v
+
 # autocompletion options
 COMPLETION_WAITING_DOTS="true"
 
@@ -34,19 +37,6 @@ export PATH=$PATH:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:$HOME/bin:$HOME/.
 # optional paths
 #   postgres dump: /Applications/Postgres.app/Contents/MacOS/bin/
 
-# bootstrap rvm in some manner I don't understand
+# bootstrap rvm
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
-
-# directory-based profiles
-
-zstyle ':chpwd:profiles:~/Work/Projects/CCNetwork/Repo/CCNetworkIOS/(|/|/*)', profile ccnetwork
-
-# configuration profiles
-
-chpwd_profile_ccnetwork()
-{
-  [[ $(profile) == ${CHPWD_PROFILE} ]] && return 1
-  print "chpwd(): switching to profile: $profile"
-  alias yay='echo "yay"'  
-}
 
