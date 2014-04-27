@@ -74,11 +74,10 @@ set undofile
 filetype plugin on
 set omnifunc=syntaxcomplete#Complete
 
-
 ""
 "" -- supertab ""
 ""
-let g:SuperTabDefaultCompletionType = "context"
+"let g:SuperTabDefaultCompletionType = "context"
 
 ""
 "" -- closetag ""
