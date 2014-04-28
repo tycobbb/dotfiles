@@ -53,14 +53,17 @@
   interactive = auto
  
 [color "status"]
+
   branch    = yellow
   added     = yellow
   changed   = dim cyan
   untracked = dim white
 
 [core]
+
   excludesfile = ~/.gitignore_global
 
 [push]
+
   default = nothing
 
