@@ -18,7 +18,7 @@ noremap <Leader>m :w <BAR> !lessc % > %:t:r.css<CR><space>
 ""
 "" -- filetype exceptions ""
 ""
-au BufRead,BufNewFile Podfile,Gemfile set filetype=ruby
+au BufRead,BufNewFile Podfile,Gemfile,*.podspec set filetype=ruby
 au BufRead,BufNewFile *.json set filetype=javascript
 au BufRead,BufNewFile *.zsh-theme set filetype=sh
 au BufRead,BufNewFile *.less set filetype=css
