@@ -60,10 +60,10 @@
   untracked = dim white
 
 [core]
-	
-  excludesfile = /Users/tcobb/.gitignore
+
+  excludesfile = ~/.gitignore_global
 
 [push]
 
-	default = nothing
+  default = nothing
 
