@@ -7,13 +7,9 @@ execute pathogen#infect()
 ""
 "" -- colors ""
 ""
+set t_Co=256
 syntax enable
-colorscheme desert
-
-""
-"" -- vim-less ""
-""
-noremap <Leader>m :w <BAR> !lessc % > %:t:r.css<CR><space>
+colorscheme molokai
 
 ""
 "" -- filetype exceptions ""
@@ -34,6 +30,12 @@ map  <Up>    <NOP>
 map  <Down>  <NOP>
 map  <Left>  <NOP>
 map  <Right> <NOP>
+
+""
+"" -- plugins ""
+""
+map     <Leader>T :execute 'NERDTreeToggle' . getcwd()<CR>
+noremap <Leader>m :w <BAR> !lessc % > %:t:r.css<CR><space>
 
 ""
 "" INDENTATION ""
@@ -67,18 +69,13 @@ set undodir=~/.vim/undodir
 set undofile
 
 ""
+"" vim-airline ""
+""
+
+set laststatus=2
+
+""
 "" AUTOCOMPLETE ""
-""
-"" -- omnicompletion ""
-""
-filetype plugin on
-set omnifunc=syntaxcomplete#Complete
-
-""
-"" -- supertab ""
-""
-"let g:SuperTabDefaultCompletionType = "context"
-
 ""
 "" -- closetag ""
 ""
