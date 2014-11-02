@@ -60,7 +60,7 @@ source $ZSH/oh-my-zsh.sh
 ##
 ## path configuration ##
 ##
-export PATH=$PATH:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:$HOME/bin:$HOME/.rvm/bin:/usr/local/share/npm/bin:$HOME/Dropbox/scripts/bin
+export PATH=/usr/local/bin:/bin:/sbin:/usr/bin:/usr/sbin:/usr/texbin:$HOME/bin:$HOME/.rvm/bin:/usr/local/share/npm/bin:$HOME/Dropbox/scripts/bin:$PATH
 
 # optional paths
 #   postgres dump: /Applications/Postgres.app/Contents/MacOS/bin/
