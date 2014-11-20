@@ -10,30 +10,31 @@
   st   = status
   lg   = log --color
   lgnm = log --color --no-merges
-  lgs  = "!zsh -c 'git log --color --since=$0.days --author=\"Ty Cobb\"'"
+  lgs  = "!zsh -c 'git log --no-merges --color --since=$0.days --author=\"Ty Cobb\"'"
+  brah = "!zsh -c 'branch-alias'"
 
   ci  = commit
   cim = commit -m
+  cam = commit -a -m
 
   br  = branch
   dbr = branch -d
-  dwb = branch -D work_branch
+  dwb = branch -D work
 
   co  = checkout
   cbr = checkout -b
-  cwb = checkout -b work_branch
+  cwb = checkout -b work
 
   rb  = rebase
-  rbm = rebase master
 
-  mwb = merge work_branch
+  mwb = merge work 
   rmc = rm --cached
 
   srb = svn rebase
   sdc = svn dcommit
 
-  pullm = pull origin master
-  pushm = push origin master
+  plo = "!git pull origin $(git br -vv | grep \"[*].*\\[.*\\]\" | cut -d ' ' -f 2)"
+  pso = "!git push origin $(git br -vv | grep \"[*].*\\[.*\\]\" | cut -d ' ' -f 2)"
 
   ulc   = reset --soft HEAD^
   count = rev-list HEAD --count
