@@ -1,6 +1,19 @@
+""
+"" Plug.vim ""
+""
+call plug#begin('~/.vim/plugged')
 
-"" PATHOGEN ""
-execute pathogen#infect()
+Plug 'docunext/closetag.vim'
+Plug 'kien/ctrlp.vim'
+Plug 'Raimondi/delimitMate'
+Plug 'scrooloose/nerdcommenter'
+Plug 'scrooloose/syntastic'
+Plug 'bling/vim-airline'
+Plug 'nathanaelkane/vim-indent-guides'
+Plug 'groenewege/vim-less'
+Plug 'tpope/vim-surround'
+
+call plug#end()
 
 ""
 "" SYNTAX HIGHLIGHTING ""
@@ -34,7 +47,6 @@ map  <Right> <NOP>
 ""
 "" -- plugins ""
 ""
-map     <Leader>T :execute 'NERDTreeToggle' . getcwd()<CR>
 noremap <Leader>m :w <BAR> !lessc % > %:t:r.css<CR><space>
 
 ""
@@ -71,8 +83,12 @@ set undofile
 ""
 "" vim-airline ""
 ""
-
 set laststatus=2
+
+""
+"" Syntastic ""
+""
+let g:syntastic_mode_map = { 'passive_filetypes': ['html'] }
 
 ""
 "" AUTOCOMPLETE ""
@@ -80,5 +96,5 @@ set laststatus=2
 "" -- closetag ""
 ""
 autocmd FileType html let b:closetag_html_style=1
-autocmd FileType html source ~/.vim/bundle/closetag.vim/plugin/closetag.vim
+autocmd FileType html source ~/.vim/plugged/closetag.vim/plugin/closetag.vim
 

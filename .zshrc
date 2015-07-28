@@ -10,7 +10,7 @@ ZSH_THEME="kolo" # "ty"
 ##
 ## plugins (sourced from: ~/.oh-my-zsh/plugins/*) ##
 ##
-plugins=(git rails ruby rvm rake gem osx brew gitfast vi-mode)
+plugins=(git rails ruby rake gem osx brew gitfast vi-mode)
 
 ##
 ## aliases ##
@@ -28,6 +28,8 @@ alias ssh-cc='ssh tcobb@162.248.10.45'
 alias sftp-cc='sftp txcobb@162.248.10.45'
 alias ssh-ec2='ssh -i ~/.ssh/tyserv.pem ubuntu@ec2-50-112-12-98.us-west-2.compute.amazonaws.com'
 alias sftp-ec2='sftp -i ~/.ssh/tyserv.pem ubuntu@ec2-50-112-12-98.us-west-2.compute.amazonaws.com'
+
+alias bower='noglob bower'
 
 ##
 ## vi-mode ##
@@ -60,11 +62,15 @@ source $ZSH/oh-my-zsh.sh
 ##
 ## path configuration ##
 ##
-export PATH=/usr/local/bin:/bin:/sbin:/usr/bin:/usr/sbin:/usr/texbin:$HOME/bin:$HOME/.rvm/bin:/usr/local/share/npm/bin:$HOME/Dropbox/scripts/bin:$PATH
+export PATH=/usr/local/bin:/bin:/sbin:/usr/bin:/usr/sbin:/usr/texbin:$HOME/bin:usr/local/share/npm/bin:$HOME/Dropbox/scripts/bin:$PATH
 
 # optional paths
 #   postgres dump: /Applications/Postgres.app/Contents/MacOS/bin/
 
-# bootstrap rvm
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
+# shim for rbenv
+eval "$(rbenv init -)"
+
+# bootstrap nvm
+export NVM_DIR=~/.nvm
+source $(brew --prefix nvm)/nvm.sh
 
