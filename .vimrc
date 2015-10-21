@@ -12,6 +12,7 @@ Plug 'bling/vim-airline'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'groenewege/vim-less'
 Plug 'tpope/vim-surround'
+Plug 'digitaltoad/vim-jade'
 
 call plug#end()
 

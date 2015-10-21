@@ -68,9 +68,11 @@ export PATH=/usr/local/bin:/bin:/sbin:/usr/bin:/usr/sbin:/usr/texbin:$HOME/bin:u
 #   postgres dump: /Applications/Postgres.app/Contents/MacOS/bin/
 
 # shim for rbenv
-eval "$(rbenv init -)"
+eval "$(rbenv init - zsh)"
 
 # bootstrap nvm
 export NVM_DIR=~/.nvm
 source $(brew --prefix nvm)/nvm.sh
 
+# added by travis gem
+[ -f /Users/ty/.travis/travis.sh ] && source /Users/ty/.travis/travis.sh

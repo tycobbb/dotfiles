@@ -1,8 +1,9 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =6
+let g:netrw_dirhist_cnt =7
 let g:netrw_dirhist_1='/Users/ty/Libraries/meteor-braintree/lib'
 let g:netrw_dirhist_2='/Users/ty/Libraries/meteor-braintree/lib/server'
 let g:netrw_dirhist_3='/Users/ty/Projects/braintree-test/client'
 let g:netrw_dirhist_4='/Users/ty/Projects/openpetition/client/views/payment'
 let g:netrw_dirhist_5='/Users/ty/Projects/openpetition/client/views/navbar'
 let g:netrw_dirhist_6='/Users/ty/Projects/openpetition/packages/braintree'
+let g:netrw_dirhist_7='/Users/ty/Projects/harbor/Harbor.xcodeproj/project.xcworkspace'
