@@ -24,12 +24,14 @@ alias lsh='ls -a'
 alias lsl='ls -l -G'
 alias ps='ps -xva'
 
+alias bower='noglob bower'
+alias pg='postgres -D /usr/local/var/postgres'
+
 alias ssh-cc='ssh tcobb@162.248.10.45'
 alias sftp-cc='sftp txcobb@162.248.10.45'
 alias ssh-ec2='ssh -i ~/.ssh/tyserv.pem ubuntu@ec2-50-112-12-98.us-west-2.compute.amazonaws.com'
 alias sftp-ec2='sftp -i ~/.ssh/tyserv.pem ubuntu@ec2-50-112-12-98.us-west-2.compute.amazonaws.com'
 
-alias bower='noglob bower'
 
 ##
 ## vi-mode ##
@@ -64,8 +66,10 @@ source $ZSH/oh-my-zsh.sh
 ##
 export PATH=/usr/local/bin:/bin:/sbin:/usr/bin:/usr/sbin:/usr/texbin:$HOME/bin:usr/local/share/npm/bin:$HOME/Dropbox/scripts/bin:$PATH
 
-# optional paths
-#   postgres dump: /Applications/Postgres.app/Contents/MacOS/bin/
+##
+## GitHub tokens 
+##
+export HOMEBREW_GITHUB_API_TOKEN=2eaf3e44ed37a6975498b456b762d134d63c7c35
 
 # shim for rbenv
 eval "$(rbenv init -)"

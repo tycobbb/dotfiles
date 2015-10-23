@@ -3,29 +3,41 @@
 ""
 call plug#begin('~/.vim/plugged')
 
-Plug 'docunext/closetag.vim'
 Plug 'kien/ctrlp.vim'
-Plug 'Raimondi/delimitMate'
-Plug 'scrooloose/nerdcommenter'
-Plug 'scrooloose/syntastic'
 Plug 'bling/vim-airline'
 Plug 'nathanaelkane/vim-indent-guides'
-Plug 'groenewege/vim-less'
 Plug 'tpope/vim-surround'
+Plug 'scrooloose/nerdcommenter'
+Plug 'Raimondi/delimitMate'
+Plug 'docunext/closetag.vim'
+Plug 'scrooloose/syntastic'
+Plug 'groenewege/vim-less'
+
+""
+"" Clojure ""
+""
+
+Plug 'guns/vim-clojure-static',    { 'for': 'clojure' }
+Plug 'guns/vim-clojure-highlight', { 'for': 'clojure' }
+Plug 'tpope/vim-salve',            { 'for': 'clojure' }
+Plug 'tpope/vim-fireplace',        { 'for': 'clojure' }
+Plug 'venantius/vim-eastwood',     { 'for': 'clojure' }
+Plug 'vim-scripts/Paredit.vim',    { 'for': 'clojure' }
+Plug 'luochen1990/rainbow',        { 'for': 'clojure' }
 
 call plug#end()
 
 ""
-"" SYNTAX HIGHLIGHTING ""
+"" SYNTAX HIGHLIGHTING
 ""
-"" -- colors ""
+"" -- colors
 ""
 set t_Co=256
 syntax enable
 colorscheme molokai
 
 ""
-"" -- filetype exceptions ""
+"" -- filetype exceptions
 ""
 au BufRead,BufNewFile Podfile,Gemfile,*.podspec set filetype=ruby
 au BufRead,BufNewFile *.json set filetype=javascript
@@ -33,7 +45,7 @@ au BufRead,BufNewFile *.zsh-theme set filetype=sh
 au BufRead,BufNewFile *.less set filetype=css
 
 ""
-"" KEYBINDINGS ""
+"" KEYBINDINGS
 ""
 imap <Up>    <NOP>
 imap <Down>  <NOP>
@@ -45,12 +57,17 @@ map  <Left>  <NOP>
 map  <Right> <NOP>
 
 ""
-"" -- plugins ""
+"" -- plugins
 ""
 noremap <Leader>m :w <BAR> !lessc % > %:t:r.css<CR><space>
 
 ""
-"" INDENTATION ""
+"" EDITING 
+""
+set backspace=2
+
+""
+"" INDENTATION
 ""
 set smartindent
 set tabstop=2
@@ -59,20 +76,20 @@ set expandtab
 set nowrap
 
 ""
-"" SPLITTING ""
+"" SPLITTING 
 ""
 set splitbelow
 set splitright
 
 ""
-"" LINE NUMBERS ""
+"" LINE NUMBERS 
 ""
 set number
 :au WinEnter * :setlocal number
 :au WinLeave * :setlocal nonumber
 
 ""
-"" BACKUP/UNDO ""
+"" BACKUP/UNDO 
 ""
 set backupdir=~/.vim/backup,/tmp
 set backup
@@ -81,20 +98,23 @@ set undodir=~/.vim/undodir
 set undofile
 
 ""
-"" vim-airline ""
+"" vim-airline
 ""
 set laststatus=2
 
 ""
-"" Syntastic ""
+"" Syntastic 
 ""
 let g:syntastic_mode_map = { 'passive_filetypes': ['html'] }
 
 ""
-"" AUTOCOMPLETE ""
+"" AUTOCOMPLETE 
 ""
-"" -- closetag ""
+"" -- closetag 
 ""
 autocmd FileType html let b:closetag_html_style=1
 autocmd FileType html source ~/.vim/plugged/closetag.vim/plugin/closetag.vim
+
+"" TODO: not sure why ftplugin for closure isn't working
+let g:rainbow_active = 1
 
