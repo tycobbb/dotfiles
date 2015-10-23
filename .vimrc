@@ -12,6 +12,7 @@ Plug 'Raimondi/delimitMate'
 Plug 'docunext/closetag.vim'
 Plug 'scrooloose/syntastic'
 Plug 'groenewege/vim-less'
+Plug 'digitaltoad/vim-jade'
 
 ""
 "" Clojure ""

@@ -72,9 +72,11 @@ export PATH=/usr/local/bin:/bin:/sbin:/usr/bin:/usr/sbin:/usr/texbin:$HOME/bin:u
 export HOMEBREW_GITHUB_API_TOKEN=2eaf3e44ed37a6975498b456b762d134d63c7c35
 
 # shim for rbenv
-eval "$(rbenv init -)"
+eval "$(rbenv init - zsh)"
 
 # bootstrap nvm
 export NVM_DIR=~/.nvm
 source $(brew --prefix nvm)/nvm.sh
 
+# added by travis gem
+[ -f /Users/ty/.travis/travis.sh ] && source /Users/ty/.travis/travis.sh
