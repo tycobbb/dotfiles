@@ -66,11 +66,6 @@ source $ZSH/oh-my-zsh.sh
 ##
 export PATH=/usr/local/bin:/bin:/sbin:/usr/bin:/usr/sbin:/usr/texbin:$HOME/bin:usr/local/share/npm/bin:$HOME/Dropbox/scripts/bin:$PATH
 
-##
-## GitHub tokens 
-##
-export HOMEBREW_GITHUB_API_TOKEN=2eaf3e44ed37a6975498b456b762d134d63c7c35
-
 # shim for rbenv
 eval "$(rbenv init - zsh)"
 
