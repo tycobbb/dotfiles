@@ -20,18 +20,15 @@ alias gitrc='vim ~/.gitconfig'
 alias vimrc='vim ~/.vimrc'
 alias zshreload='source ~/.zshrc'
 
+# shell
 alias lsh='ls -a'
 alias lsl='ls -l -G'
 alias ps='ps -xva'
 
+# webdev
 alias bower='noglob bower'
 alias pg='postgres -D /usr/local/var/postgres'
-
-alias ssh-cc='ssh tcobb@162.248.10.45'
-alias sftp-cc='sftp txcobb@162.248.10.45'
-alias ssh-ec2='ssh -i ~/.ssh/tyserv.pem ubuntu@ec2-50-112-12-98.us-west-2.compute.amazonaws.com'
-alias sftp-ec2='sftp -i ~/.ssh/tyserv.pem ubuntu@ec2-50-112-12-98.us-west-2.compute.amazonaws.com'
-
+alias be='bundle exec'
 
 ##
 ## vi-mode ##
