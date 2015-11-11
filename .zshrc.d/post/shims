@@ -1,0 +1,11 @@
+#!/bin/zsh
+
+# shim for rbenv
+eval "$(rbenv init - zsh)"
+
+# bootstrap nvm
+export NVM_DIR=~/.nvm
+source $(brew --prefix nvm)/nvm.sh
+
+# added by travis gem
+[ -f /Users/ty/.travis/travis.sh ] && source /Users/ty/.travis/travis.sh

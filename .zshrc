@@ -1,74 +1,49 @@
+#!/bin/zsh
 
-# path to oh-my-zsh config
+## path to oh-my-zsh config
 ZSH=$HOME/.oh-my-zsh
 
-##
 ## theme
-##
 ZSH_THEME="kolo" # "ty"
 
-##
 ## plugins (sourced from: ~/.oh-my-zsh/plugins/*) ##
-##
 plugins=(git rails ruby rake gem osx brew gitfast vi-mode)
 
-##
-## aliases ##
-##
-alias zshrc='vim ~/.zshrc'
-alias gitrc='vim ~/.gitconfig'
-alias vimrc='vim ~/.vimrc'
-alias zshreload='source ~/.zshrc'
+## utility functions
+function rezsh() {
+  if [[ $1 == "-v" ]]; then ZSHRC_VERBOSE=$1 fi
+  source ~/.zshrc
+}
 
-# shell
-alias lsh='ls -a'
-alias lsl='ls -l -G'
-alias ps='ps -xva'
+function printd() {
+  if [[ -n $ZSHRC_VERBOSE ]]; then echo $1; fi
+}
 
-# webdev
-alias bower='noglob bower'
-alias pg='postgres -D /usr/local/var/postgres'
-alias be='bundle exec'
+function load_modules() {
+  directory=$1
+  if [[ -d $directory ]] && [[ -n "$(ls $directory)" ]]; then
+    for dotfile in $directory/*; do 
+      if [[ ! -d "${dotfile}" ]] && [[ -r "${dotfile}" ]]; then
+        printd "load: ${dotfile}"
+        source ${dotfile}
+      fi
+    done
+  fi
+}
 
-##
-## vi-mode ##
-##
-bindkey -v 
-export KEYTIMEOUT=1
+## load root modules
+load_modules .zshrc.d
 
-# Use vim cli mode
-bindkey '^P' up-history
-bindkey '^N' down-history
-
-# backspace and ^h working even after
-# returning from command mode
-bindkey '^?' backward-delete-char
-bindkey '^h' backward-delete-char
-
-# ctrl-w removed word backwards
-bindkey '^w' backward-kill-word
-
-# ctrl-r starts searching history backward
-bindkey '^r' history-incremental-search-backward
-
-##
-## autocompletion options ##
-##
-COMPLETION_WAITING_DOTS="true"
-
+## bootstrap oh-my-zsh
+printd "step: bootstrap oh-my-zsh"
 source $ZSH/oh-my-zsh.sh
 
-##
 ## path configuration ##
-##
+printd "step: update path"
 export PATH=/usr/local/bin:/bin:/sbin:/usr/bin:/usr/sbin:/usr/texbin:$HOME/bin:usr/local/share/npm/bin:$HOME/Dropbox/scripts/bin:$PATH
 
-# shim for rbenv
-eval "$(rbenv init - zsh)"
+## load post modules
+load_modules .zshrc.d/post
 
-# bootstrap nvm
-export NVM_DIR=~/.nvm
-source $(brew --prefix nvm)/nvm.sh
-
-# added by travis gem
-[ -f /Users/ty/.travis/travis.sh ] && source /Users/ty/.travis/travis.sh
+## cleaup flags 
+unset ZSHRC_VERBOSE

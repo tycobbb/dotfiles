@@ -32,8 +32,7 @@ home_directory="$HOME/"
 ## helper functions ##
 ##
 
-prompt_for_skip ()
-{
+prompt_for_skip() {
   while true; do
     read result
     case $result in
@@ -47,7 +46,9 @@ prompt_for_skip ()
 ## parse options ##
 ##
 
-usage() { echo "usage: check_version [-ch]" 1>&2; exit 1; }
+usage() { 
+  echo "usage: check_version [-ch]" 1>&2; exit 1; 
+}
 
 while getopts ":ch" option; do
   case "${option}" in
@@ -94,4 +95,3 @@ for entry in * .*; do
 
   ln -sF $repo_filepath $home_filepath
 done
-
