@@ -6,10 +6,21 @@ call plug#begin('~/.vim/plugged')
 Plug 'kien/ctrlp.vim'
 Plug 'bling/vim-airline'
 Plug 'nathanaelkane/vim-indent-guides'
+
+"" editing
 Plug 'tpope/vim-surround'
+Plug 'tpope/vim-eunuch'
+Plug 'terryma/vim-multiple-cursors'
 Plug 'scrooloose/nerdcommenter'
-Plug 'Raimondi/delimitMate'
+
+"" autocomplete
+Plug 'Valloric/YouCompleteMe'
+Plug 'sirver/ultisnips'
+Plug 'honza/vim-snippets'
 Plug 'docunext/closetag.vim'
+Plug 'Raimondi/delimitMate'
+
+"" syntax highlighting
 Plug 'scrooloose/syntastic'
 Plug 'groenewege/vim-less'
 Plug 'digitaltoad/vim-jade'
@@ -40,7 +51,7 @@ colorscheme molokai
 ""
 "" -- filetype exceptions
 ""
-au BufRead,BufNewFile Podfile,Gemfile,*.podspec set filetype=ruby
+au BufRead,BufNewFile Podfile,Gemfile,.pryrc,*.podspec set filetype=ruby
 au BufRead,BufNewFile *.json set filetype=javascript
 au BufRead,BufNewFile *.zsh-theme set filetype=sh
 au BufRead,BufNewFile *.less set filetype=css
@@ -63,18 +74,19 @@ map  <Right> <NOP>
 noremap <Leader>m :w <BAR> !lessc % > %:t:r.css<CR><space>
 
 ""
+"" INDENTATION
+""
+set tabstop=2
+set softtabstop=2
+set shiftwidth=2
+set smarttab
+set expandtab
+set nowrap
+
+""
 "" EDITING 
 ""
 set backspace=2
-
-""
-"" INDENTATION
-""
-set smartindent
-set tabstop=2
-set shiftwidth=2
-set expandtab
-set nowrap
 
 ""
 "" SPLITTING 
@@ -116,6 +128,10 @@ let g:syntastic_mode_map = { 'passive_filetypes': ['html'] }
 autocmd FileType html let b:closetag_html_style=1
 autocmd FileType html source ~/.vim/plugged/closetag.vim/plugin/closetag.vim
 
-"" TODO: not sure why ftplugin for closure isn't working
-let g:rainbow_active = 1
+""
+"" ultisnips
+""
+let g:UltiSnipsExpandTrigger="<c-j>"
 
+"" TODO: not sure why ftplugin for clojure isn't working
+let g:rainbow_active = 1

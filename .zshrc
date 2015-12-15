@@ -32,7 +32,7 @@ function load_modules() {
 }
 
 ## load root modules
-load_modules .zshrc.d
+load_modules ~/.zshrc.d
 
 ## bootstrap oh-my-zsh
 printd "step: bootstrap oh-my-zsh"
@@ -43,7 +43,7 @@ printd "step: update path"
 export PATH=/usr/local/bin:/bin:/sbin:/usr/bin:/usr/sbin:/usr/texbin:$HOME/bin:usr/local/share/npm/bin:$HOME/Dropbox/scripts/bin:$PATH
 
 ## load post modules
-load_modules .zshrc.d/post
+load_modules ~/.zshrc.d/post
 
 ## cleaup flags 
 unset ZSHRC_VERBOSE
