@@ -8,9 +8,8 @@
   alias = !git config --list | grep 'alias\\.' | sed 's/alias\\.\\([^=]*\\)=\\(.*\\)/\\1\t=> \\2/' | sort
 
   st   = status
-  lg   = log --color
-  lgnm = log --color --no-merges
-  lgs  = "!zsh -c 'git log --no-merges --color --since=$0.days --author=\"Ty Cobb\"'"
+  lg   = log --color --no-merges
+  lgs  = "!zsh -c 'git log --color --no-merges --since=$0.days --author=\"Ty Cobb\"'"
   brah = "!zsh -c 'branch-alias'"
 
   ci  = commit

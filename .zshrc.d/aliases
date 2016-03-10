@@ -1,6 +1,5 @@
 #!/bin/zsh
 
-alias zshrc='vim ~/.zshrc'
 alias gitrc='vim ~/.gitconfig'
 alias vimrc='vim ~/.vimrc'
 
@@ -13,3 +12,4 @@ alias ps='ps -xva'
 alias bower='noglob bower'
 alias pg='postgres -D /usr/local/var/postgres'
 alias be='bundle exec'
+alias bs='bundle exec spring'

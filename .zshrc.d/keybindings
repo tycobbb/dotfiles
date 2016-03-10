@@ -13,7 +13,7 @@ bindkey '^N' down-history
 bindkey '^?' backward-delete-char
 bindkey '^h' backward-delete-char
 
-# ctrl-w removed word backwards
+# ctrl-w removes word backwards
 bindkey '^w' backward-kill-word
 
 # ctrl-r starts searching history backward
