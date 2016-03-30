@@ -2,6 +2,7 @@
 
 alias gitrc='vim ~/.gitconfig'
 alias vimrc='vim ~/.vimrc'
+alias tmuxrc='vim ~/.tmux.conf'
 
 # shell
 alias lsh='ls -a'

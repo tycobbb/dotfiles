@@ -18,11 +18,9 @@
 
   br  = branch
   dbr = branch -d
-  dwb = branch -D work
 
   co  = checkout
   cbr = checkout -b
-  cwb = checkout -b work
 
   rb  = rebase
 
@@ -38,11 +36,6 @@
   ulc   = reset --soft HEAD^
   count = rev-list HEAD --count
   
-  sync   = !zsh ~/Dropbox/scripts/git_commit.zsh
-  syncp  = !zsh ~/Dropbox/scripts/git_commit.zsh --push
-  ssync  = !zsh ~/Dropbox/scripts/git_commit.zsh --svn
-  ssyncp = !zsh ~/Dropbox/scripts/git_commit.zsh --svn --push 
-
 [color]
 
   diff   = auto
