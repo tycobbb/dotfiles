@@ -1,0 +1,30 @@
+#!/bin/zsh
+
+function add_to_path {
+  case ":$PATH:" in
+    *":$1"*) :;; # don't add, duplicate
+    *) PATH="$1:$PATH";; # add
+  esac
+}
+
+printd "step: update path"
+
+# path directories in reverse-priority order
+path_dirs=($HOME/bin
+  /usr/texbin
+  /usr/sbin
+  /usr/bin
+  /sbin
+  /bin
+  /usr/local/bin
+)
+
+# add each directory
+for path_dir in $path_dirs; do
+  add_to_path $path_dir
+done
+
+printd "✔ path: $PATH"
+
+unset path_dirs
+unset -f add_to_path

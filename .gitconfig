@@ -1,10 +1,8 @@
 [user]
-
   name  = Ty Cobb
   email = ty.cobb.m@gmail.com
 
 [alias]
-
   alias = !git config --list | grep 'alias\\.' | sed 's/alias\\.\\([^=]*\\)=\\(.*\\)/\\1\t=> \\2/' | sort
 
   st   = status
@@ -37,7 +35,6 @@
   count = rev-list HEAD --count
   
 [color]
-
   diff   = auto
   status = auto
   branch = auto
@@ -46,18 +43,17 @@
   interactive = auto
  
 [color "status"]
-
   branch    = yellow
   added     = yellow
   changed   = dim cyan
   untracked = dim white
 
 [core]
-
   excludesfile = ~/.gitignore_global
 	editor = /usr/local/bin/vim
 
 [push]
-
   default = nothing
 
+[credential]
+  helper = osxkeychain

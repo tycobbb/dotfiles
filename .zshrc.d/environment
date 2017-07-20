@@ -2,3 +2,10 @@
 
 ## postgres
 export PGDATA="/usr/local/var/postgres"
+
+## python
+export PIP_REQUIRE_VIRTUALENV=true
+
+function gpip() {
+  PIP_REQUIRE_VIRTUALENV="" pip "$@"
+}

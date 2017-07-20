@@ -48,7 +48,7 @@ syntax enable
 colorscheme molokai
 
 "" -- filetype exceptions
-au BufRead,BufNewFile Podfile,Gemfile,.pryrc,*.podspec set filetype=ruby
+au BufRead,BufNewFile Podfile,Gemfile,fastlane/*,.pryrc,*.podspec set filetype=ruby
 au BufRead,BufNewFile *.json set filetype=javascript
 au BufRead,BufNewFile *.zsh-theme set filetype=sh
 au BufRead,BufNewFile *.less set filetype=css
@@ -98,6 +98,10 @@ set backup
 
 set undodir=~/.vim/undodir
 set undofile
+
+""
+"" ctrl-p
+let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
 
 ""
 "" vim-airline
