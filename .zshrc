@@ -6,7 +6,7 @@ ZSH_RC=$HOME/.zshrc
 ZSH_RCD=$HOME/.zshrc.d
 
 ## theme
-ZSH_THEME="kolo"
+ZSH_THEME="awesomepanda"
 
 ## plugins (sourced from: ~/.oh-my-zsh/plugins/*)
 plugins=(git rails ruby rake gem osx brew yarn gitfast vi-mode)
