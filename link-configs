@@ -20,8 +20,8 @@ declare -a exclusions=(
   '.git'
   '.gitmodules'
   '.gitignore'
-  'link_configs.sh'
-  'link_configs.sh.swp'
+  'link-configs'
+  'link-configs.'
   '.DS_Store'
 )
 
@@ -58,7 +58,7 @@ while getopts ":ch" option; do
 done
 
 ##
-## main point of execution ##
+## main ##
 ##
 
 for entry in * .*; do
@@ -95,3 +95,4 @@ for entry in * .*; do
 
   ln -sF $repo_filepath $home_filepath
 done
+

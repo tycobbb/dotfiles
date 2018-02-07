@@ -1,7 +1,13 @@
 #!/bin/zsh
 
+## editor
+export EDITOR=code
+
 ## postgres
-export PGDATA="/usr/local/var/postgres"
+export PGDATA=/usr/local/var/postgres
+
+## android
+export ANDROID_SDK_ROOT=~/Library/Android/sdk
 
 ## python
 export PIP_REQUIRE_VIRTUALENV=true
