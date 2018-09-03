@@ -10,8 +10,10 @@ function add_to_path {
 printd "step: update path"
 
 # path directories in reverse-priority order
-path_dirs=($HOME/bin
-  /usr/texbin
+path_dirs=(
+  ./bin
+  $HOME/.cargo/bin
+  $HOME/bin
   /usr/sbin
   /usr/bin
   /sbin

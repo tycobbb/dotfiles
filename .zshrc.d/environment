@@ -1,5 +1,8 @@
 #!/bin/zsh
 
+## bundler
+export BUNDLER_EDITOR=atom
+
 ## postgres
 export PGDATA="/usr/local/var/postgres"
 
@@ -9,3 +12,4 @@ export PIP_REQUIRE_VIRTUALENV=true
 function gpip() {
   PIP_REQUIRE_VIRTUALENV="" pip "$@"
 }
+

@@ -14,3 +14,6 @@ alias bower='noglob bower'
 alias pg='postgres -D /usr/local/var/postgres'
 alias be='bundle exec'
 alias bs='bundle exec spring'
+alias dc=docker-compose
+alias dm=docker-machine
+
