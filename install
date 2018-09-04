@@ -1,9 +1,7 @@
 #!/bin/bash
 
 ##
-## color constants ##
-##
-
+## color constants
 default_color='\033[0m'
 white_color='\033[1;37m'
 green_color='\033[0;32m'
@@ -11,16 +9,14 @@ red_color='\033[0;31m'
 gray_color='\033[0;37m'
 
 ##
-## configuration variables ##
-##
-
+## configuration variables
 declare -a exclusions=(
   '.'
   '..'
   '.git'
   '.gitmodules'
   '.gitignore'
-  'link-configs'
+  'install'
   '.DS_Store'
 )
 
@@ -28,9 +24,7 @@ repo_directory="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )/"
 home_directory="$HOME/"
 
 ##
-## helper functions ##
-##
-
+## helper functions
 prompt_for_skip() {
   while true; do
     read result
@@ -42,11 +36,9 @@ prompt_for_skip() {
 }
 
 ##
-## parse options ##
-##
-
+## parse options
 usage() { 
-  echo "usage: check_version [-ch]" 1>&2; exit 1; 
+  echo "usage: install [-ch]" 1>&2; exit 1; 
 }
 
 while getopts ":ch" option; do
@@ -57,9 +49,9 @@ while getopts ":ch" option; do
 done
 
 ##
-## main ##
-##
+## main
 
+# link configs
 for entry in * .*; do
   if [[ ${exclusions[*]} =~ $entry ]]; then # ignore any results from the exclusions array
     continue
@@ -94,4 +86,16 @@ for entry in * .*; do
 
   ln -sF $repo_filepath $home_filepath
 done
+
+# install brew and brew packages if necessary
+if ! [ -x "$(command -v brew)" ]; then
+  echo -e "${green_color}• ${white_color}brew was not installed, installing${default_color}"
+  ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+else
+  echo -e "${green_color}✓ ${white_color}brew exists${default_color}"
+fi
+
+
+echo -e "${green_color}• ${white_color}brew bundle${default_color}"
+brew bundle --global
 
