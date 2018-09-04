@@ -59,8 +59,8 @@ load_modules $ZSH_RCD
 printd "step: bootstrap oh-my-zsh"
 source $ZSH/oh-my-zsh.sh
 
-## load post modules
-load_modules $ZSH_RCD/post
+## load late modules
+load_modules $ZSH_RCD/late
 
 ## cleaup variables
 unset ZSH_VERBOSE

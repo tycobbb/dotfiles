@@ -1,0 +1,25 @@
+#!/bin/zsh
+
+# - load rbenv
+eval "$(rbenv init - zsh)"
+
+# - load nvm
+source $(brew --prefix nvm)/nvm.sh
+
+# - load z
+source /usr/local/etc/profile.d/z.sh
+
+# - load fzf
+if [[ ! "$PATH" == */usr/local/opt/fzf/bin* ]]; then
+  export PATH="$PATH:/usr/local/opt/fzf/bin"
+fi
+
+# auto-completion
+[[ $- == *i* ]] && source "/usr/local/opt/fzf/shell/completion.zsh" 2> /dev/null
+
+# key bindings
+source "/usr/local/opt/fzf/shell/key-bindings.zsh"
+
+# cmd-o opens the file using "open" in fzf
+export FZF_DEFAULT_OPTS="--bind='ctrl-o:execute(open {})+abort'"
+

@@ -13,8 +13,6 @@ Plug 'terryma/vim-multiple-cursors'
 Plug 'scrooloose/nerdcommenter'
 
 "" autocomplete
-Plug 'Valloric/YouCompleteMe'
-Plug 'sirver/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'docunext/closetag.vim'
 Plug 'Raimondi/delimitMate'

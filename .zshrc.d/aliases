@@ -4,10 +4,19 @@ alias gitrc='vim ~/.gitconfig'
 alias vimrc='vim ~/.vimrc'
 alias tmuxrc='vim ~/.tmux.conf'
 
+# overrides
+alias cat='bat'
+alias find='fd'
+alias top='htop'
+alias du='ncdu --color dark -rr -x'
+
 # shell
 alias lsh='ls -a'
 alias lsl='ls -l -G'
 alias ps='ps -xva'
+
+# tools
+alias fzp="fzf --preview 'bat --color \"always\" {}'"
 
 # webdev
 alias bower='noglob bower'

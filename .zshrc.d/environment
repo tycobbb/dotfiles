@@ -6,8 +6,11 @@ export EDITOR=code
 ## postgres
 export PGDATA=/usr/local/var/postgres
 
-## android
+# android
 export ANDROID_SDK_ROOT=~/Library/Android/sdk
+
+## nvm
+export NVM_DIR=~/.nvm
 
 ## python
 export PIP_REQUIRE_VIRTUALENV=true

@@ -2,35 +2,25 @@
   name  = Ty Cobb
   email = ty.cobb.m@gmail.com
 
+[core]
+  excludesfile = ~/.gitignore_global
+	editor = /usr/local/bin/vim
+
 [alias]
   alias = !git config --list | grep 'alias\\.' | sed 's/alias\\.\\([^=]*\\)=\\(.*\\)/\\1\t=> \\2/' | sort
-
-  st   = status
-  lg   = log --color --no-merges
-  lgs  = "!zsh -c 'git log --color --no-merges --since=$0.days --author=\"Ty Cobb\"'"
-  brah = "!zsh -c 'branch-alias'"
-
-  ci  = commit
-  cim = commit -m
-  cam = commit -a -m
-
-  br  = branch
-  dbr = branch -d
-
-  co  = checkout
-  cbr = checkout -b
-
-  rb  = rebase
-
-  mwb = merge work 
-  rmc = rm --cached
-
-  srb = svn rebase
-  sdc = svn dcommit
-
-  plo = "!git pull origin $(git br -vv | grep \"[*].*\\[.*\\]\" | cut -d ' ' -f 2)"
-  pso = "!git push origin $(git br -vv | grep \"[*].*\\[.*\\]\" | cut -d ' ' -f 2)"
-
+  st    = status
+  lg    = log --color --no-merges
+  ci    = commit
+  cim   = commit -m
+  cam   = commit -a -m
+  br    = branch
+  dbr   = branch -d
+  co    = checkout
+  cbr   = checkout -b
+  rb    = rebase
+  rp    = remote prune
+  plo   = "!git pull origin $(git br -vv | grep \"[*].*\\[.*\\]\" | cut -d ' ' -f 2)"
+  pso   = "!git push origin $(git br -vv | grep \"[*].*\\[.*\\]\" | cut -d ' ' -f 2)"
   ulc   = reset --soft HEAD^
   count = rev-list HEAD --count
   
@@ -48,12 +38,20 @@
   changed   = dim cyan
   untracked = dim white
 
-[core]
-  excludesfile = ~/.gitignore_global
-	editor = /usr/local/bin/vim
-
 [push]
   default = nothing
 
+[pager]
+  branch = false
+  diff = diff-so-fancy | less
+  show = diff-so-fancy | less
+
 [credential]
   helper = osxkeychain
+
+[filter "lfs"]
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+  smudge = git-lfs smudge -- %f
+
