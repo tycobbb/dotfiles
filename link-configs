@@ -21,7 +21,6 @@ declare -a exclusions=(
   '.gitmodules'
   '.gitignore'
   'link-configs'
-  'link-configs.'
   '.DS_Store'
 )
 

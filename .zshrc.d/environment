@@ -1,8 +1,5 @@
 #!/bin/zsh
 
-## editor
-export EDITOR=code
-
 ## postgres
 export PGDATA=/usr/local/var/postgres
 
@@ -18,3 +15,4 @@ export PIP_REQUIRE_VIRTUALENV=true
 function gpip() {
   PIP_REQUIRE_VIRTUALENV="" pip "$@"
 }
+
