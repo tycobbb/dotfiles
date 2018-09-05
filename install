@@ -2,11 +2,11 @@
 
 ##
 ## color constants
-default_color='\033[0m'
-white_color='\033[1;37m'
-green_color='\033[0;32m'
-red_color='\033[0;31m'
-gray_color='\033[0;37m'
+no_color='\033[0m'
+white='\033[1;37m'
+green='\033[0;32m'
+red='\033[0;31m'
+gray='\033[0;37m'
 
 ##
 ## configuration variables
@@ -38,12 +38,13 @@ prompt_for_skip() {
 ##
 ## parse options
 usage() { 
-  echo "usage: install [-ch]" 1>&2; exit 1; 
+  echo "usage: install [-chv]" 1>&2; exit 1; 
 }
 
-while getopts ":ch" option; do
+while getopts ":chv" option; do
   case "${option}" in
     c) clean_links=1 ;;
+    v) verbose=1 ;;
     h) usage ;;
   esac
 done
@@ -61,27 +62,27 @@ for entry in * .*; do
   repo_filepath=$repo_directory$entry
   
   # if we're in clean mode, we're going to see if each item is a symlink, and if so remove it
-  if [[ -n "${clean_links}" ]]; then 
-    if [[ -L $home_filepath ]]; then 
-      echo -e "${red_color}✗ ${white_color}removing link: ${gray_color}$home_filepath${default_color}"
+  if [ -n "${clean_links}" ]; then 
+    if [ -L $home_filepath ]; then
+      echo -e "${red}✗ ${white}removing link: ${gray}$home_filepath${no_color}"
       rm -r $home_filepath
     fi
     continue
   fi 
  
   # otherwise, in the normal mode we're going to check the filetype to determine which operation to perform 
-  if [[ -L $home_filepath ]]; then # the file in the home dir is already a link
-    echo -e "${green_color}✓ ${white_color}link exists: ${gray_color}$home_filepath${default_color}"
+  if [ -L $home_filepath ]; then # the file in the home dir is already a link
+    echo -e "${green}✓ ${white}link exists: ${gray}$home_filepath${no_color}"
     continue
-  elif [[ -e $home_filepath ]]; then # if the home file exists
-    echo -e "${red_color}✗ ${white_color}file exists: ${gray_color}$home_filepath${white_color}. (b)ackup or (s)kip?${default_color}"
-    if [[ $(prompt_for_skip) == "1" ]]; then # and if we elect to skip linking it
+  elif [ -e $home_filepath ]; then # if the home file exists
+    echo -e "${red}✗ ${white}file exists: ${gray}$home_filepath${white}. (b)ackup or (s)kip?${no_color}"
+    if [ $(prompt_for_skip) == "1" ]; then # and if we elect to skip linking it
       continue
     else # otherwise rename the file to a backup filename
       mv -f $home_filepath "$home_filepath.bak"
     fi
   else
-    echo -e "${green_color}• ${white_color}file did not exist, linking: ${gray_color}$home_filepath${default_color}"
+    echo -e "${green}• ${white}file did not exist, linking: ${gray}$home_filepath${no_color}"
   fi
 
   ln -sF $repo_filepath $home_filepath
@@ -89,13 +90,17 @@ done
 
 # install brew and brew packages if necessary
 if ! [ -x "$(command -v brew)" ]; then
-  echo -e "${green_color}• ${white_color}brew was not installed, installing${default_color}"
+  echo -e "${green}• ${white}brew was not installed, installing${no_color}"
   ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 else
-  echo -e "${green_color}✓ ${white_color}brew exists${default_color}"
+  echo -e "${green}✓ ${white}brew exists${no_color}"
 fi
 
+echo -e "${green}• ${white}brew bundle${no_color}"
 
-echo -e "${green_color}• ${white_color}brew bundle${default_color}"
-brew bundle --global
+if [ -n "${verbose}" ]; then
+  brew bundle --global -v
+else
+  brew bundle --global
+fi
 
