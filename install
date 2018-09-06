@@ -12,7 +12,6 @@ declare -a exclusions=(
   '.'
   '..'
   '.git'
-  '.gitmodules'
   '.gitignore'
   'install'
   '.DS_Store'

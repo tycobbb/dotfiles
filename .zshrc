@@ -65,6 +65,3 @@ load_modules $ZSH_RCD/late
 ## cleaup variables
 unset ZSH_VERBOSE
 
-# added by travis gem
-[ -f /Users/ty/.travis/travis.sh ] && source /Users/ty/.travis/travis.sh
-
