@@ -31,7 +31,7 @@ set background=dark
 colorscheme one
 
 "" filetype exceptions
-au BufRead,BufNewFile Podfile,Gemfile,fastlane/*,.pryrc,*.podspec set filetype=ruby
+au BufRead,BufNewFile Podfile,Gemfile,.Brewfile,fastlane/*,.pryrc,*.podspec set filetype=ruby
 au BufRead,BufNewFile *.json set filetype=javascript
 au BufRead,BufNewFile *.zsh-theme set filetype=sh
 au BufRead,BufNewFile *.less set filetype=css
