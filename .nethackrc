@@ -1,0 +1,22 @@
+# game environment
+OPTIONS=color,hilite_pet,lit_corridor,menucolors,DECgraphics
+OPTIONS=showexp,showscore,time,fixinv
+OPTIONS=msg_window:f,disclose:+i+a+v+g+c
+OPTIONS=msghistory:200
+
+# custom environment
+OPTIONS=catname:Nyan,dogname:Potato,horsename:Neigh-bor
+OPTIONS:boulder:0,fruit:Yum-yum,pushweapon
+
+# controls
+OPTIONS=autodig,!autopickup
+
+# character
+OPTIONS=role:Valkyrie,race:Dwarf
+
+# colors
+MENUCOLOR="[Cc]ursed"=orange&bold&underline
+MENUCOLOR="[Uu]ncursed"=yellow
+MENUCOLOR="[Bb]lessed"=lightgreen
+MENUCOLOR="-[0-9]"=orange
+
