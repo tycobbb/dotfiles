@@ -1,0 +1,30 @@
+#!/bin/sh
+
+# parse options
+usage() { 
+  echo "usage: zshrc [-h] <list|module-name>" 1>&2; exit 1; 
+}
+
+while getopts ":h" option; do
+  case "${option}" in
+    h) usage ;;
+  esac
+done
+
+# helpers
+function list_modules() {
+  \find $1/* -depth 0 -type f | sed -e "s|^$ZSH_RCD/||"
+}
+
+# main
+if [ "$1" = "list" ]; then
+  list_modules $ZSH_RCD
+  list_modules $ZSH_RCD/late
+elif [ -z "$1" ]; then
+  $EDITOR $ZSH_RC
+elif [ -f $ZSH_RCD/$1 ]; then
+  $EDITOR $ZSH_RCD/$1
+else
+  echo "$1 is not a known module."
+fi
+

@@ -1,15 +1,18 @@
 #!/bin/zsh
 
-## postgres
+# editor
+export EDITOR=vim
+
+# postgres
 export PGDATA=/usr/local/var/postgres
 
 # android
 export ANDROID_SDK_ROOT=~/Library/Android/sdk
 
-## nvm
+# nvm
 export NVM_DIR=~/.nvm
 
-## python
+# python
 export PIP_REQUIRE_VIRTUALENV=true
 
 function gpip() {

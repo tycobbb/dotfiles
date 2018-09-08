@@ -1,28 +1,26 @@
 #!/bin/zsh
 
-alias gitrc='vim ~/.gitconfig'
-alias vimrc='vim ~/.vimrc'
-alias tmuxrc='vim ~/.tmux.conf'
+alias gitrc="$EDITOR ~/.gitconfig"
+alias vimrc="$EDITOR ~/.vimrc"
 
 # overrides
-alias cat='bat'
-alias find='fd'
-alias top='htop'
-alias du='ncdu --color dark -rr -x'
+alias cat="bat"
+alias find="fd"
+alias top="htop"
+alias du="ncdu --color dark -rr -x"
 
 # shell
-alias lsh='ls -a'
-alias lsl='ls -l -G'
-alias ps='ps -xva'
+alias lsh="ls -a"
+alias lsl="ls -l -G"
+alias ps="ps -xva"
 
 # tools
 alias fzp="fzf --preview 'bat --color \"always\" {}'"
 
 # webdev
-alias bower='noglob bower'
-alias pg='postgres -D /usr/local/var/postgres'
-alias be='bundle exec'
-alias bs='bundle exec spring'
+alias pg="postgres -D /usr/local/var/postgres"
+alias be="bundle exec"
+alias bs="bundle exec spring"
 alias dc=docker-compose
 alias dm=docker-machine
 

@@ -11,8 +11,9 @@ printd "step: update path"
 
 # path directories in reverse-priority order
 path_dirs=(
-  ./bin
   $HOME/.cargo/bin
+  $HOME/Library/Android/sdk/platform-tools
+  $HOME/.bin
   $HOME/bin
   /usr/sbin
   /usr/bin
@@ -20,7 +21,7 @@ path_dirs=(
   /bin
   /usr/local/sbin
   /usr/local/bin
-  $HOME/Library/Android/sdk/platform-tools
+  ./bin
 )
 
 # add each directory

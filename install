@@ -1,35 +1,25 @@
 #!/bin/bash
 
 # colors
-nc='\033[0m'
-white='\033[1;37m'
-green='\033[0;32m'
-red='\033[0;31m'
-gray='\033[0;37m'
+nc="\033[0m"
+white="\033[1;37m"
+green="\033[0;32m"
+red="\033[0;31m"
+gray="\033[0;37m"
 
 # configuration
 declare -a exclusions=(
-  '.'
-  '..'
-  '.git'
-  '.gitignore'
-  'install'
-  '.DS_Store'
+  "."
+  ".."
+  ".git"
+  ".gitignore"
+  "install",
+  "README.md",
+  ".DS_Store"
 )
 
 home_directory="$HOME/"
 repo_directory="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/"
-
-# helpers
-prompt_for_skip() {
-  while true; do
-    read result
-    case $result in
-      [Bb]* ) echo 0; break;;
-      [Ss]* ) echo 1; break;;
-    esac
-  done
-}
 
 # parse options
 usage() { 
@@ -44,6 +34,17 @@ while getopts ":chv" option; do
   esac
 done
 
+# helpers
+prompt_for_skip() {
+  while true; do
+    read result
+    case $result in
+      [Bb]* ) echo 0; break;;
+      [Ss]* ) echo 1; break;;
+    esac
+  done
+}
+
 # main
 # - link configs
 for entry in * .*; do
@@ -54,7 +55,7 @@ for entry in * .*; do
   home_filepath=$home_directory$entry
   repo_filepath=$repo_directory$entry
   
-  # if we're in clean mode, we're going to see if each item is a symlink, and if so remove it
+  # if we"re in clean mode, we"re going to see if each item is a symlink, and if so remove it
   if [ -n "${clean_links}" ]; then 
     if [ -L $home_filepath ]; then
       echo -e "${red}✗ ${white}removing link: ${gray}$home_filepath${nc}"
@@ -63,7 +64,7 @@ for entry in * .*; do
     continue
   fi 
  
-  # otherwise, in the normal mode we're going to check the filetype to determine which operation to perform 
+  # otherwise, in the normal mode we"re going to check the filetype to determine which operation to perform 
   if [ -L $home_filepath ]; then # the file in the home dir is already a link
     echo -e "${green}✓ ${white}link exists: ${gray}$home_filepath${nc}"
     continue
@@ -100,5 +101,5 @@ fi
 
 # - install vim plugins
 echo -e "${green}• ${white}installing vim plugins${nc}"
-vim +'PlugInstall' +qall &> /dev/null
+vim +"PlugInstall" +qall &> /dev/null
 
