@@ -1,36 +1,28 @@
 #!/bin/zsh
+printd "➜ step: update path"
 
-function add_to_path {
-  case ":$PATH:" in
-    *":$1"*) :;; # don't add, duplicate
-    *) PATH="$1:$PATH";; # add
-  esac
-}
-
-printd "step: update path"
-
-# path directories in reverse-priority order
+# path directories (in priority-order)
 path_dirs=(
   $HOME/.cargo/bin
   $HOME/Library/Android/sdk/platform-tools
-  $HOME/.bin
   $HOME/bin
-  /usr/sbin
+  $HOME/.bin
+  /usr/local/bin
   /usr/bin
-  /sbin
   /bin
   /usr/local/sbin
-  /usr/local/bin
+  /usr/sbin
+  /sbin
   ./bin
 )
 
-# add each directory
-for path_dir in $path_dirs; do
-  add_to_path $path_dir
+# add
+PATH="$path_dirs[1]"
+for path_dir in ${path_dirs:1}; do
+  PATH="$PATH:$path_dir"
 done
 
 printd "✔ path: $PATH"
 
 unset path_dirs
-unset -f add_to_path
 

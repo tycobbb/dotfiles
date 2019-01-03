@@ -1,5 +1,4 @@
 #!/bin/zsh
-
 alias gitrc="$EDITOR ~/.gitconfig"
 alias vimrc="$EDITOR ~/.vimrc"
 
@@ -23,4 +22,3 @@ alias be="bundle exec"
 alias bs="bundle exec spring"
 alias dc=docker-compose
 alias dm=docker-machine
-

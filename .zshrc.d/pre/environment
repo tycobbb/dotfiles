@@ -1,5 +1,4 @@
 #!/bin/zsh
-
 # editor
 export EDITOR=vim
 
@@ -18,4 +17,3 @@ export PIP_REQUIRE_VIRTUALENV=true
 function gpip() {
   PIP_REQUIRE_VIRTUALENV="" pip "$@"
 }
-

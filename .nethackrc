@@ -15,7 +15,7 @@ OPTIONS=autodig,!autopickup
 OPTIONS=role:Valkyrie,race:Dwarf
 
 # colors
-MENUCOLOR="[Cc]ursed"=orange&bold&underline
+MENUCOLOR="[Cc]ursed"=orange&bold
 MENUCOLOR="[Uu]ncursed"=yellow
 MENUCOLOR="[Bb]lessed"=lightgreen
 MENUCOLOR="-[0-9]"=orange

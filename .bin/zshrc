@@ -18,8 +18,9 @@ function list_modules() {
 
 # main
 if [ "$1" = "list" ]; then
+  list_modules $ZSH_RCD/pre
   list_modules $ZSH_RCD
-  list_modules $ZSH_RCD/late
+  list_modules $ZSH_RCD/post
 elif [ -z "$1" ]; then
   $EDITOR $ZSH_RC
 elif [ -f $ZSH_RCD/$1 ]; then

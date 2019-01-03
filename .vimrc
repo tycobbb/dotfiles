@@ -52,7 +52,6 @@ noremap <Leader>m :w <BAR> !lessc % > %:t:r.css<CR><space>
 
 ""
 "" EDITOR
-
 "" indentation
 set tabstop=2
 set softtabstop=2
@@ -70,6 +69,13 @@ set splitright
 set number
 :au WinEnter * :setlocal number
 :au WinLeave * :setlocal nonumber
+
+"" cursor
+if $TERM_PROGRAM =~ "iTerm"
+  let &t_SI = "\<Esc>]50;CursorShape=1\x7"
+  let &t_SR = "\<Esc>]50;CursorShape=2\x7"
+  let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+endif
 
 ""
 "" BACKUP/UNDO

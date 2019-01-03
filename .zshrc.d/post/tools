@@ -25,4 +25,3 @@ source "/usr/local/opt/fzf/shell/key-bindings.zsh"
 
 # - cmd-o opens the file using "open" in fzf
 export FZF_DEFAULT_OPTS="--bind='ctrl-o:execute(open {})+abort'"
-
