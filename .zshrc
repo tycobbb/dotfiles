@@ -9,7 +9,7 @@ ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="awesomepanda"
 
 # - plugins (sourced from: ~/.oh-my-zsh/plugins/*)
-plugins=(git rails ruby rake gem osx brew yarn gitfast vi-mode)
+plugins=(osx vi-mode brew git gitfast rails ruby rake gem yarn rust cargo)
 
 # cosmetics
 rs="\033[0m"
