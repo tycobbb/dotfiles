@@ -1,27 +1,42 @@
 #!/bin/zsh
 
-# load rbenv
-eval "$(rbenv init - zsh)"
+# rbenv
+if [ "$(command -v rbenv)" ]; then
+  eval "$(rbenv init - zsh)"
+fi
 
-# load nvm
-source $(brew --prefix nvm)/nvm.sh
+# nvm
+if [ "$(command -v nvm)" ]; then
+  export NVM_DIR=~/.nvm
+  source $(brew --prefix nvm)/nvm.sh
+fi
 
-# load travis
-[ -f /Users/ty/.travis/travis.sh ] && source /Users/ty/.travis/travis.sh
+# travis
+if [ -f /Users/ty/.travis/travis.sh ]; then
+  source /Users/ty/.travis/travis.sh
+fi
 
-# load z
+# python/pip
+export PIP_REQUIRE_VIRTUALENV=true
+
+function gpip() {
+  PIP_REQUIRE_VIRTUALENV="" pip "$@"
+}
+
+# z
 source /usr/local/etc/profile.d/z.sh
 
-# load fzf
+# fzf
 if [[ ! "$PATH" == */usr/local/opt/fzf/bin* ]]; then
   export PATH="$PATH:/usr/local/opt/fzf/bin"
 fi
 
-# - auto-completion
+# fzf/auto-completion
 [[ $- == *i* ]] && source "/usr/local/opt/fzf/shell/completion.zsh" 2> /dev/null
 
-# - key bindings
+# fzf/key bindings
 source "/usr/local/opt/fzf/shell/key-bindings.zsh"
 
-# - cmd-o opens the file using "open" in fzf
+# fzf/shortcuts
+# cmd-o opens the file using "open" in fzf
 export FZF_DEFAULT_OPTS="--bind='ctrl-o:execute(open {})+abort'"

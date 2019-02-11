@@ -1,4 +1,5 @@
 #!/bin/zsh
+
 # editor
 export EDITOR=vim
 
@@ -7,13 +8,3 @@ export PGDATA=/usr/local/var/postgres
 
 # android
 export ANDROID_SDK_ROOT=~/Library/Android/sdk
-
-# nvm
-export NVM_DIR=~/.nvm
-
-# python
-export PIP_REQUIRE_VIRTUALENV=true
-
-function gpip() {
-  PIP_REQUIRE_VIRTUALENV="" pip "$@"
-}

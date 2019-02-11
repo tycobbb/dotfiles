@@ -2,6 +2,7 @@ tap "homebrew/cask"
 cask_args appdir: "/Applications"
 
 brew "ack"
+brew "antigen"
 brew "bat"
 brew "diff-so-fancy"
 brew "fd"
