@@ -52,7 +52,6 @@ function load_plugins() {
   antigen bundle cargo
 
   antigen bundle zsh-users/zsh-syntax-highlighting
-  antigen bundle joel-porquet/zsh-dircolors-solarized.git
 
   # theme
   antigen theme awesomepanda
