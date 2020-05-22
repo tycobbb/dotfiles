@@ -1,6 +1,9 @@
 tap "homebrew/cask"
 cask_args appdir: "/Applications"
 
+# taps
+tap "homebrew/cask-versions"
+
 # brews
 brew "ack"
 brew "antigen"
