@@ -47,7 +47,6 @@ function load_plugins() {
   antigen bundle ruby
   antigen bundle rake
   antigen bundle gem
-  antigen bundle yarn
   antigen bundle rust
   antigen bundle cargo
 

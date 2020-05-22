@@ -7,11 +7,11 @@ alias cat="bat"
 alias find="fd"
 alias top="htop"
 alias du="ncdu --color dark -rr -x"
+alias ls="exa"
+alias ps="procs"
 
 # shell
-alias lsh="ls -a"
-alias lsl="ls -l -G"
-alias ps="ps -xva"
+alias lsl="ls -l"
 
 # tools
 alias fzp="fzf --preview 'bat --color \"always\" {}'"

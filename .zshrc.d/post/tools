@@ -1,5 +1,10 @@
 #!/bin/zsh
 
+# direnv
+if [ "$(command -v direnv)" ]; then
+  eval "$(direnv hook zsh)"
+fi
+
 # rbenv
 if [ "$(command -v rbenv)" ]; then
   eval "$(rbenv init - zsh)"
@@ -15,13 +20,6 @@ fi
 if [ -f /Users/ty/.travis/travis.sh ]; then
   source /Users/ty/.travis/travis.sh
 fi
-
-# python/pip
-export PIP_REQUIRE_VIRTUALENV=true
-
-function gpip() {
-  PIP_REQUIRE_VIRTUALENV="" pip "$@"
-}
 
 # z
 source /usr/local/etc/profile.d/z.sh

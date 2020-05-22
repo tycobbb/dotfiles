@@ -18,7 +18,7 @@
   co    = checkout
   cbr   = checkout -b
   rb    = rebase
-  rp    = remote prune
+  prune = remote prune
   plo   = "!git pull origin $(git br -vv | grep \"[*].*\\[.*\\]\" | cut -d ' ' -f 2)"
   pso   = "!git push origin $(git br -vv | grep \"[*].*\\[.*\\]\" | cut -d ' ' -f 2)"
   ulc   = reset --soft HEAD^

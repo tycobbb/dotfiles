@@ -1,22 +1,108 @@
-# game environment
-OPTIONS=color,hilite_pet,lit_corridor,menucolors,DECgraphics
-OPTIONS=showexp,showscore,time,fixinv
-OPTIONS=msg_window:f,disclose:+i+a+v+g+c
-OPTIONS=msghistory:200
-
-# custom environment
-OPTIONS=catname:Nyan,dogname:Potato,horsename:Neigh-bor
-OPTIONS:boulder:0,fruit:Yum-yum,pushweapon
-
-# controls
-OPTIONS=autodig,!autopickup
-
-# character
 OPTIONS=role:Valkyrie,race:Dwarf
 
-# colors
-MENUCOLOR="[Cc]ursed"=orange&bold
-MENUCOLOR="[Uu]ncursed"=yellow
+# -- options --
+# -- options/info
+OPTIONS=showrace
+OPTIONS=showexp,time
+OPTIONS=sortloot:full
+
+# -- options/saves
+OPTIONS=bones
+OPTIONS=checkpoint
+OPTIONS=disclose:+iagcv
+
+# -- options/controls
+OPTIONS=!rest_on_space
+OPTIONS=lootabc
+
+# -- options/autopickup
+OPTIONS=autopickup
+OPTIONS=pickup_types:$!/="+?%
+autopickup_exception="> *corpse"#
+
+# -- options/auto
+OPTIONS=autodig
+OPTIONS=autoopen
+OPTIONS=autoquiver
+OPTIONS=pushweapon
+
+# -- options/safety
+OPTIONS=paranoid_confirm:attack
+OPTIONS=pickup_burden:B
+OPTIONS=msg_window:reverse
+OPTIONS=msghistory:1000
+
+# -- options/graphics
+OPTIONS=color
+OPTIONS=menucolors
+OPTIONS=DECgraphics
+
+# -- options/highlighting
+OPTIONS=hilite_pet
+OPTIONS=hilite_pile
+OPTIONS=dark_room
+OPTIONS=lit_corridor
+
+# -- options/symbols
+OPTIONS:boulder:0
+
+# -- options/names
+OPTIONS=fruit:peach
+OPTIONS=catname:Nyan
+OPTIONS=dogname:Potato
+OPTIONS=horsename:Neigh
+
+# -- options/drawing
+OPTIONS=runmode:teleport
+
+# -- colors --
+# -- colors/buc
+MENUCOLOR="[Cc]ursed"=red&bold
+MENUCOLOR="[Uu]ncursed"=white
 MENUCOLOR="[Bb]lessed"=lightgreen
 MENUCOLOR="-[0-9]"=orange
 
+# -- colors/status
+OPTIONS=statushilites
+
+# -- colors/s/hp
+OPTIONS=hitpointbar
+OPTIONS=hilite_status:hitpoints/100%/grey&normal
+OPTIONS=hilite_status:hitpoints/<100%/green&normal
+OPTIONS=hilite_status:hitpoints/<66%/yellow&normal
+OPTIONS=hilite_status:hitpoints/<50%/orange&normal
+OPTIONS=hilite_status:hitpoints/<33%/red&bold
+OPTIONS=hilite_status:hitpoints/<15%/red&inverse
+
+# -- colors/s/power
+OPTIONS=hilite_status:power/100%/grey&normal
+OPTIONS=hilite_status:power/<100%/green&normal
+OPTIONS=hilite_status:power/<66%/yellow&normal
+OPTIONS=hilite_status:power/<50%/orange&normal
+OPTIONS=hilite_status:power/<33%/red&bold
+
+# -- colors/s/carry
+OPTIONS=hilite_status:cap/burdened/yellow
+OPTIONS=hilite_status:cap/stressed/orange
+OPTIONS=hilite_status:cap/strained/red&bold
+OPTIONS=hilite_status:cap/overtaxed/red&inverse
+OPTIONS=hilite_status:cap/overloaded/red&inverse&blink
+
+## -- colors/s/hunger
+OPTIONS=hilite_status:hunger/satiated/yellow
+OPTIONS=hilite_status:hunger/hungry/orange
+OPTIONS=hilite_status:hunger/weak/red&bold
+OPTIONS=hilite_status:hunger/fainting/red&inverse
+OPTIONS=hilite_status:hunger/fainted/red&inverse&blink
+
+## -- colors/s/conditions
+OPTIONS=hilite_status:condition/hallu/yellow
+OPTIONS=hilite_status:condition/conf/orange
+OPTIONS=hilite_status:condition/stun/red&bold
+OPTIONS=hilite_status:condition/termill/red&inverse
+OPTIONS=hilite_status:condition/foodpois/red&inverse
+OPTIONS=hilite_status:condition/slime/red&inverse
+
+# -- colors/s/characteristics
+OPTIONS=hilite_status:characteristics/up/green
+OPTIONS=hilite_status:characteristics/down/red
