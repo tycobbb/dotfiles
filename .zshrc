@@ -50,6 +50,8 @@ function load_plugins() {
   antigen bundle rust
   antigen bundle cargo
 
+  antigen bundle zsh-users/zsh-completions
+  antigen bundle zsh-users/zsh-autosuggestions
   antigen bundle zsh-users/zsh-syntax-highlighting
 
   # theme
