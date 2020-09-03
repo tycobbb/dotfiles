@@ -41,6 +41,9 @@
 [push]
   default = nothing
 
+[pull]
+  rebase = false
+
 [pager]
   branch = false
   diff = diff-so-fancy | less
