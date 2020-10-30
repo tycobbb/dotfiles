@@ -1,0 +1,111 @@
+#!/bin/sh
+. prelude
+
+# -- parsing --
+Usage() {
+  pt "usage" 1>&2
+  pl "launch [-h] <command>" 1>&2
+
+  pl "" 1>&2
+  pt "commands" 1>&2
+
+  pp "launch list            " 1>&2
+  pl "list non-apple launch agents" "$ga" 1>&2
+
+  pp "launch enable <name>   " 1>&2
+  pl "enable agent name" "$ga" 1>&2
+
+  pp "launch disable <name>  " 1>&2
+  pl "disable agent by name" "$ga" 1>&2
+
+  exit 1
+}
+
+while getopts ":h" option; do
+  case "${option}" in
+    h*) Usage ;;
+  esac
+done
+
+# -- commands --
+List() {
+  pt "disabled"
+  sr; launchctl print-disabled user/"$(id -u)" \
+    | awk '{ if ($2 == "=>" && $3 == "true") { gsub("\"","",$1); print $1 } }' \
+    ; sr
+
+  pl ""
+  pt "enabled"
+  sg; launchctl list \
+    | awk '{ if ($3 != "Label" && $3 !~ /com\.apple/) print $3 }' \
+    ; sr
+}
+
+Disable() {
+  name="$1"; shift
+  Require "$name"
+
+  FindPlist
+  sg; launchctl stop "$name" \
+   && launchctl unload -w "$plist" \
+    ; sr
+
+  ps "disabled $name"
+}
+
+Enable() {
+  name="$1"; shift
+  Require "$name"
+
+  FindPlist
+  sg; launchctl load -w "$plist" \
+   && launchctl start "$name" \
+    ; sr
+
+  ps "enabled $name"
+}
+
+# -- queries --
+FindPlist() {
+  # the list of common launch agent directories
+  set -- \
+    "$HOME/Library/LaunchAgents" \
+    "/Library/LaunchAgents" \
+    "/Library/LaunchDaemons" \
+    "/System/Library/LaunchAgents" \
+    "/System/Library/LaunchDaemons"
+
+  # search for a plist matching this launch agent
+  for path in "$@"; do
+    plist=$(\
+      grep -R "$path" -e "$name" \
+        | sed 's/:.*//' \
+    )
+
+    if [ -n "$plist" ]; then
+      break
+    fi
+  done
+
+  # fatal error if we can't find a plist
+  if [ -z "$plist" ]; then
+    pf 2 "could not find plist: $name"
+  fi
+}
+
+# -- main --
+Main() {
+  # validate command
+  cmd="$1"; shift
+  Require "$cmd"
+
+  # dispatch command
+  case "$cmd" in
+    list)    List ;;
+    disable) Disable "$@" ;;
+    enable)  Enable "$@" ;;
+    *)       Usage ;;
+  esac
+}
+
+Main "$@"

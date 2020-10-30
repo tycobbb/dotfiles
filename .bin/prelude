@@ -1,0 +1,5 @@
+#!/bin/sh
+
+# -- includes --
+. core/ui.sh
+. core/parse.sh

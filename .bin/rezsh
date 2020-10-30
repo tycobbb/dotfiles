@@ -1,26 +1,26 @@
-#!/bin/zsh
+#!/bin/sh
+. prelude
 
-# parse options
-usage() { 
-  echo "usage: rezsh [-hv]" 1>&2; exit 1; 
+# -- parsing --
+Usage() {
+  echo "usage: rezsh [-hv]" 1>&2; exit 1;
 }
 
 while getopts ":hv" option; do
   case "${option}" in
-    v) verbose=$1 ;;
-    h) usage ;;
+    v)  verbose=$1 ;;
+    h*) Usage ;;
   esac
 done
 
-# helpers
-function load_config() {
-  source $ZSH_RC
+# -- commands --
+LoadConfig() {
+  . $ZSH_RC
 }
 
 # main
-if [ -n "$verbose" ]; then 
-  ZSH_VERBOSE=$1 load_config
+if [ -n "$verbose" ]; then
+  ZSH_VERBOSE=$1 LoadConfig
 else
-  source $ZSH_RC
+  LoadConfig
 fi
-

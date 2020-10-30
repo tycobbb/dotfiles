@@ -1,0 +1,71 @@
+#!/bin/sh
+. prelude
+
+# -- constants --
+NOTES_DIR="$HOME/Library/Mobile Documents/27N4MQEA55~pro~writer/Documents/Notes"
+
+# -- parsing --
+Usage() {
+  echo "usage: notes [-h] <name>" 1>&2; exit 1;
+}
+
+while getopts ":h" option; do
+  case "${option}" in
+    h*) usage ;;
+  esac
+done
+
+# -- commands --
+EditNote() {
+  ia "$path.md"
+}
+
+CheckType() {
+  if [ -f "$path.txt" ]; then
+    mv "$path.txt" "$path.md"
+  fi
+}
+
+CreateNote() {
+  pe "file does not exist: ${ga}$name${nc}"
+  pi "create it ${ga}[yn]${nc}?"
+
+  read -r confirm
+  if [ "$confirm" = "y" ]; then
+    touch "$path.md"
+  else
+    exit 0;
+  fi
+}
+
+# -- queries --
+FindPath() {
+  name=$(
+    echo "$1" \
+      | awk '{ sub(".", toupper(substr($1, 1, 1)), $1); print($1) }' \
+  )
+
+  path="$NOTES_DIR/$name"
+}
+
+# -- main --
+Main() {
+  # validate args
+  raw="$1"; shift
+  Require "$raw"
+
+  # generate path
+  FindPath "$raw"
+
+  # change extension to markdown if txt
+  CheckType
+
+  # prompt to create file if it does not exist
+  if [ ! -f "$path.md" ]; then
+    CreateNote
+  fi
+
+  EditNote
+}
+
+Main "$*"

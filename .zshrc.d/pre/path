@@ -5,10 +5,11 @@ printd "➜ step: update path"
 path_dirs=(
   $HOME/bin
   $HOME/.bin
-  $HOME/Library/Android/sdk/platform-tools
-  $HOME/Library/Python/3.7/bin
   $HOME/.cargo/bin
   $HOME/.local/bin
+  $HOME/Library/Android/sdk/platform-tools
+  $HOME/Library/Python/3.7/bin
+  $HOME/Library/Application\ Support/itch/apps/butler
   /usr/local/bin
   /usr/bin
   /bin

@@ -1,8 +1,8 @@
 #!/bin/sh
 
 # parse options
-usage() { 
-  echo "usage: zshrc [-h] <list|module-name>" 1>&2; exit 1; 
+usage() {
+  echo "usage: zshrc [-h] <list|module-name>" 1>&2; exit 1;
 }
 
 while getopts ":h" option; do
@@ -28,4 +28,3 @@ elif [ -f $ZSH_RCD/$1 ]; then
 else
   echo "$1 is not a known module."
 fi
-

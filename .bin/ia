@@ -1,0 +1,30 @@
+#!/bin/sh
+. prelude
+
+# -- parsing --
+Usage() {
+  echo "usage: ia [-h] <file>" 1>&2; exit 1;
+}
+
+while getopts ":h" option; do
+  case "${option}" in
+    h*) Usage ;;
+  esac
+done
+
+# -- main --
+Main() {
+  # validate args
+  file="$1"; shift
+  Require "$file"
+
+  # create file if necessary
+  if [ ! -f "$file" ]; then
+    touch "$file"
+  fi
+
+  # open it in ia writer
+  open "$file" -a "/Applications/iA Writer.app"
+}
+
+Main "$*"
