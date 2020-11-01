@@ -6,12 +6,12 @@ NOTES_DIR="$HOME/Library/Mobile Documents/27N4MQEA55~pro~writer/Documents/Notes"
 
 # -- parsing --
 Usage() {
-  echo "usage: notes [-h] <name>" 1>&2; exit 1;
+  pu "[-h] <name>"
 }
 
 while getopts ":h" option; do
   case "${option}" in
-    h*) usage ;;
+    h*) Usage ;;
   esac
 done
 
@@ -27,8 +27,12 @@ CheckType() {
 }
 
 CreateNote() {
-  pe "file does not exist: ${ga}$name${nc}"
-  pi "create it ${ga}[yn]${nc}?"
+  if [ -f "$path.md" ]; then
+    return 0
+  fi
+
+  pe "file does not exist: ${ga}$name"
+  pi "create it? ${ga}[yn]"
 
   read -r confirm
   if [ "$confirm" = "y" ]; then
@@ -54,17 +58,10 @@ Main() {
   raw="$1"; shift
   Require "$raw"
 
-  # generate path
+  # create the note if necessary and edit it
   FindPath "$raw"
-
-  # change extension to markdown if txt
   CheckType
-
-  # prompt to create file if it does not exist
-  if [ ! -f "$path.md" ]; then
-    CreateNote
-  fi
-
+  CreateNote
   EditNote
 }
 

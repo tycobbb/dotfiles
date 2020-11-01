@@ -9,13 +9,13 @@ Usage() {
   pl "" 1>&2
   pt "commands" 1>&2
 
-  pp "launch list            " 1>&2
+  pp "- list            " 1>&2
   pl "list non-apple launch agents" "$ga" 1>&2
 
-  pp "launch enable <name>   " 1>&2
+  pp "- enable <name>   " 1>&2
   pl "enable agent name" "$ga" 1>&2
 
-  pp "launch disable <name>  " 1>&2
+  pp "- disable <name>  " 1>&2
   pl "disable agent by name" "$ga" 1>&2
 
   exit 1

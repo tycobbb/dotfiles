@@ -1,30 +1,50 @@
 #!/bin/sh
+. prelude
 
-# parse options
-usage() {
-  echo "usage: zshrc [-h] <list|module-name>" 1>&2; exit 1;
+# -- parsing --
+Usage() {
+  pu "[-h] <list|module-name>" 1>&2; exit 1;
 }
 
 while getopts ":h" option; do
   case "${option}" in
-    h) usage ;;
+    h*) Usage ;;
   esac
 done
 
-# helpers
-function list_modules() {
+# -- commands --
+List() {
+  pt "modules"
+  ListDir "$ZSH_RCD/pre"
+  ListDir "$ZSH_RCD"
+  ListDir "$ZSH_RCD/post"
+}
+
+ListDir() {
   \find $1/* -depth 0 -type f | sed -e "s|^$ZSH_RCD/||"
 }
 
-# main
-if [ "$1" = "list" ]; then
-  list_modules $ZSH_RCD/pre
-  list_modules $ZSH_RCD
-  list_modules $ZSH_RCD/post
-elif [ -z "$1" ]; then
-  $EDITOR $ZSH_RC
-elif [ -f $ZSH_RCD/$1 ]; then
-  $EDITOR $ZSH_RCD/$1
-else
-  echo "$1 is not a known module."
-fi
+Edit() {
+  if [ -z "$1" ]; then
+    EditFile "$ZSH_RC"
+  elif [ -f $ZSH_RCD/$1 ]; then
+    EditFile "$ZSH_RCD/$1"
+  else
+    pe "'$1' is not a known module ${ga}(try 'zshrc list')"
+  fi
+}
+
+EditFile() {
+  $EDITOR "$1"
+}
+
+# -- main --
+Main() {
+  # dispatch command
+  case "$1" in
+    list) List ;;
+    *)    Edit "$1" ;;
+  esac
+}
+
+Main "$*"

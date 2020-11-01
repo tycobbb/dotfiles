@@ -3,7 +3,7 @@
 
 # -- parsing --
 Usage() {
-  echo "usage: ia [-h] <file>" 1>&2; exit 1;
+  pu "[-h] <file>"
 }
 
 while getopts ":h" option; do
