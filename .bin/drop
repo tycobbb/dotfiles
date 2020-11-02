@@ -1,0 +1,25 @@
+#!/bin/sh
+. prelude
+
+# -- parsing --
+Usage() {
+  pu "[-h] <path>"
+}
+
+while getopts ":h" option; do
+  case "${option}" in
+    h*) Usage ;;
+  esac
+done
+
+# -- main --
+Main() {
+  # validate args
+  path="$1"; shift
+  Require "$path"
+
+  # ignore this folder
+  xattr -w com.dropbox.ignored 1 "$PWD/$path"
+}
+
+Main "$*"

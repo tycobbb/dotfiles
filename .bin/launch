@@ -75,10 +75,13 @@ FindPlist() {
     "/System/Library/LaunchAgents" \
     "/System/Library/LaunchDaemons"
 
+  # create pattern from name (strip trailing pid)
+  pattern=$(echo "$name" | sed 's/\.[0-9]*$//')
+
   # search for a plist matching this launch agent
   for path in "$@"; do
     plist=$(\
-      grep -R "$path" -e "$name" \
+      grep -iR "$path" -e "$pattern" \
         | sed 's/:.*//' \
     )
 
