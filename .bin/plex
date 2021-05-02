@@ -1,0 +1,20 @@
+#!/bin/sh
+. prelude
+
+# -- parsing --
+Usage() {
+  pu "[-h] <file>"
+}
+
+while getopts ":h" option; do
+  case "${option}" in
+    h*) Usage ;;
+  esac
+done
+
+# -- main --
+Main() {
+  ssh "plex@$PLEX_IP"
+}
+
+Main "$*"

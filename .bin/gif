@@ -1,0 +1,50 @@
+#!/bin/sh
+. prelude
+
+# -- parsing --
+Usage() {
+  pu "[-h] <in> [<out>]"
+}
+
+while getopts ":h" option; do
+  case "${option}" in
+    h*) Usage ;;
+  esac
+done
+
+# -- commands --
+Convert() {
+  ffmpeg \
+    -i "$1" \
+    -s 600x400 \
+    -pix_fmt rgb8 \
+    -r 30 \
+    -f gif - \
+    |
+    gifsicle \
+      --optimize=3 \
+      --delay=3 \
+      > \
+      "$2"
+}
+
+# -- main --
+Main() {
+  # require input path
+  in="$1"; shift
+  Require "$in"
+  RequireExists "$in"
+
+  # create a same-named gif in this dir if out path is unspecified
+  out="$1"; shift
+  if [ -z "$out" ]; then
+    out="$in"
+    out="${out##*/}"
+    out="${out%%.*}.gif"
+  fi
+
+  # convert mov
+  Convert "$in" "$out"
+}
+
+Main "$*"

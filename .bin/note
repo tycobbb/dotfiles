@@ -4,9 +4,16 @@
 # -- constants --
 NOTES_DIR="$HOME/Library/Mobile Documents/27N4MQEA55~pro~writer/Documents/Notes"
 
+# shellcheck disable=SC2016
+CLEAN_AWK='{
+  sub(/\..*/, "", $1) # strip ext
+  sub(/./, tolower(substr($1, 1, 1)), $1) # uncapitalize
+  print($1)
+}'
+
 # -- parsing --
 Usage() {
-  pu "[-h] <name>"
+  pu "[-h] <list|name>"
 }
 
 while getopts ":h" option; do
@@ -16,6 +23,21 @@ while getopts ":h" option; do
 done
 
 # -- commands --
+# lists existing notes
+ListNotes() {
+  find "$NOTES_DIR" -type f -name "*.md" -exec basename {} ';' \
+    | awk "$CLEAN_AWK"
+}
+
+# creates a note if necessary and edits it
+OpenNote() {
+  FindPath "$1"
+  CheckType
+  CreateNote
+  EditNote
+}
+
+# -- c/helpers
 EditNote() {
   ia "$path.md"
 }
@@ -31,7 +53,7 @@ CreateNote() {
     return 0
   fi
 
-  pe "file does not exist: ${ga}$name"
+  pe "file does not exist: ${ga}$name.md"
   pi "create it? ${ga}[yn]"
 
   read -r confirm
@@ -46,9 +68,10 @@ CreateNote() {
 FindPath() {
   name=$(
     echo "$1" \
-      | awk '{ sub(".", toupper(substr($1, 1, 1)), $1); print($1) }' \
+      | awk "$CLEAN_AWK"
   )
 
+  name="${name%.*}"
   path="$NOTES_DIR/$name"
 }
 
@@ -58,11 +81,12 @@ Main() {
   raw="$1"; shift
   Require "$raw"
 
-  # create the note if necessary and edit it
-  FindPath "$raw"
-  CheckType
-  CreateNote
-  EditNote
+  # dispatch command
+  if [ "$raw" = "list" ]; then
+    ListNotes
+  else 
+    OpenNote "$raw"
+  fi
 }
 
 Main "$*"

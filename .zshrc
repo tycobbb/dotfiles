@@ -43,19 +43,10 @@ function load_plugins() {
   antigen bundle command-not-found
   antigen bundle git
   antigen bundle gitfast
-  antigen bundle rails
-  antigen bundle ruby
-  antigen bundle rake
-  antigen bundle gem
-  antigen bundle rust
-  antigen bundle cargo
 
   antigen bundle zsh-users/zsh-completions
   antigen bundle zsh-users/zsh-autosuggestions
   antigen bundle zsh-users/zsh-syntax-highlighting
-
-  # theme
-  antigen theme awesomepanda
 
   # apply plugins
   antigen apply

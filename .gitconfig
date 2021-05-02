@@ -38,6 +38,9 @@
   changed   = dim cyan
   untracked = dim white
 
+[init]
+  defaultBranch = main
+
 [push]
   default = nothing
 

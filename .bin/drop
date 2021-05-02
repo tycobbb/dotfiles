@@ -20,6 +20,7 @@ Main() {
 
   # ignore this folder
   xattr -w com.dropbox.ignored 1 "$PWD/$path"
+  ps "dropbox ignoring $path"
 }
 
 Main "$*"

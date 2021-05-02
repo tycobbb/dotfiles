@@ -1,5 +1,10 @@
 #!/bin/zsh
 
+# starship
+if [ "$(command -v starship)" ]; then
+  eval "$(starship init zsh)"
+fi
+
 # direnv
 if [ "$(command -v direnv)" ]; then
   eval "$(direnv hook zsh)"
