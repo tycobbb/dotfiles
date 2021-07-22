@@ -1,0 +1,29 @@
+#!/bin/sh
+. prelude
+
+# -- parsing --
+Usage() {
+  pu "[-h] <path>"
+}
+
+while getopts ":h" option; do
+  case "${option}" in
+    h*) Usage ;;
+  esac
+done
+
+# -- main --
+Main() {
+  # validate args
+  path="$1"; shift
+  Require "$path"
+
+  # open the workspace or project
+  # TODO: sort better, prompt if more than one result
+  find -E . -maxdepth 1 -type d -regex ".*(xcworkspace|xcodeproj)" \
+    | sort -r \
+    | head -n 1 \
+    | xargs open
+}
+
+Main "$*"

@@ -3,10 +3,10 @@ printd "➜ step: update path"
 
 # path directories (in priority-order)
 path_dirs=(
-  $HOME/bin
   $HOME/.bin
   $HOME/.cargo/bin
   $HOME/.local/bin
+  $HOME/Work/IFTTT/bin
   $HOME/Library/Android/sdk/platform-tools
   $HOME/Library/Python/3.7/bin
   $HOME/Library/Application\ Support/itch/apps/butler
