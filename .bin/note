@@ -13,7 +13,7 @@ CLEAN_AWK='{
 
 # -- parsing --
 Usage() {
-  pu "[-h] <list|name>"
+  pu "[-h] <list|open|name>"
 }
 
 while getopts ":h" option; do
@@ -27,6 +27,11 @@ done
 ListNotes() {
   find "$NOTES_DIR" -type f -name "*.md" -exec basename {} ';' \
     | awk "$CLEAN_AWK"
+}
+
+# opens the notes dir
+OpenDir() {
+  open "$NOTES_DIR"
 }
 
 # creates a note if necessary and edits it
@@ -84,6 +89,8 @@ Main() {
   # dispatch command
   if [ "$raw" = "list" ]; then
     ListNotes
+  elif [ "$raw" = "open" ]; then
+    OpenDir
   else 
     OpenNote "$raw"
   fi
