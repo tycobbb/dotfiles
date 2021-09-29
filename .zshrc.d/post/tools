@@ -1,5 +1,8 @@
 #!/bin/zsh
 
+# get brew prefix
+BREW=$(brew --prefix)
+
 # starship
 if [ "$(command -v starship)" ]; then
   eval "$(starship init zsh)"
@@ -27,18 +30,18 @@ if [ -f /Users/ty/.travis/travis.sh ]; then
 fi
 
 # z
-source $(brew --prefix)/etc/profile.d/z.sh
+source $BREW/etc/profile.d/z.sh
 
 # fzf
-if [[ ! "$PATH" == */opt/homebrew/opt/fzf/bin* ]]; then
-  export PATH="${PATH:+${PATH}:}/opt/homebrew/opt/fzf/bin"
+if [[ ! "$PATH" == *$BREW/opt/fzf/bin* ]]; then
+  export PATH="${PATH:+${PATH}:}$BREW/opt/fzf/bin"
 fi
 
 # fzf/auto-completion
-[[ $- == *i* ]] && source "/opt/homebrew/opt/fzf/shell/completion.zsh" 2> /dev/null
+[[ $- == *i* ]] && source "$BREW/opt/fzf/shell/completion.zsh" 2> /dev/null
 
 # fzf/key bindings
-source "/opt/homebrew/opt/fzf/shell/key-bindings.zsh"
+source "$BREW/opt/fzf/shell/key-bindings.zsh"
 
 # fzf/shortcuts
 # cmd-o opens the file using "open" in fzf

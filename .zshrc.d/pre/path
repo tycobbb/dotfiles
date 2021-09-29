@@ -10,9 +10,11 @@ path_dirs=(
   $HOME/Library/Android/sdk/platform-tools
   $HOME/Library/Python/3.7/bin
   $HOME/Library/Application\ Support/itch/apps/butler
+  /usr/local/bin
   /opt/homebrew/bin
   /usr/bin
   /bin
+  /usr/local/sbin
   /opt/homebrew/sbin
   /usr/sbin
   /sbin

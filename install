@@ -116,4 +116,4 @@ fi
 
 # install vim plugins
 echo -e "${green}• ${white}installing vim plugins${nc}"
-vim +"PlugInstall" +qall
+vim +"PlugInstall" +qall 
