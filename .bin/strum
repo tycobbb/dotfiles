@@ -1,0 +1,56 @@
+#!/bin/sh
+# shellcheck disable=SC3006,SC3030,SC3054
+. prelude
+
+# -- parsing --
+Usage() {
+  pu "[-hn] <path>"
+}
+
+while getopts ":hn" option; do
+  case "${option}" in
+    h*) Usage ;;
+    n*) DRY_RUN=1 ;;
+  esac
+done
+
+shift $((OPTIND-1))
+
+# -- main --
+Main() {
+  # validate args
+  src="$1"; shift
+  Require "$src"
+
+  # declare data
+  dir=$(dirname "$src")
+  notes=(A As B C Cs D Ds E F Fs G Gs)
+
+  # declare consts
+  i0=3 # C
+  o0=3 # 3
+
+  # transpose note
+  i=0; while [ $i -lt 24 ]; do
+    # get note index
+    i1=$(( (i0 + i) % 12 ))
+
+    # get octave and pitch delta
+    o1=$(( o0 + i / 12 ))
+    pd=$(( i * 100 ))
+
+    # create file, or print if dry run
+    dst="$dir/${notes[i1]}$o1.wav"
+    if [ -n "$DRY_RUN" ]; then
+      echo "\"$src\" + $pd -> \"$dst\""
+    else
+      sox "$src" "$dst" pitch $pd
+    fi
+
+    ((i += 1))
+  done
+
+  ps "created intrument in $dir"
+}
+
+Main "$*"

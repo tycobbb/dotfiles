@@ -4,7 +4,6 @@
 
 [core]
   excludesfile = ~/.gitignore_global
-	editor = /usr/local/bin/vim
 
 [alias]
   alias = !git config --list | grep 'alias\\.' | sed 's/alias\\.\\([^=]*\\)=\\(.*\\)/\\1\t=> \\2/' | sort

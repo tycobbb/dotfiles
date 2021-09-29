@@ -11,11 +11,11 @@ gn="\033[1;32m"
 yl="\033[1;33m"
 
 # rc utils
-function printd() {
+printd() {
   if [[ -n $ZSH_VERBOSE ]]; then echo $1; fi
 }
 
-function load_modules() {
+load_modules() {
   directory=$1
   if [[ -d $directory ]] && [[ -n "$(ls $directory)" ]]; then
     for dotfile in $directory/*; do
@@ -28,7 +28,7 @@ function load_modules() {
 }
 
 # plugins
-function load_plugins() {
+load_plugins() {
   printd "➜ step: load plugins"
  
   # plugins -- start
@@ -53,16 +53,21 @@ function load_plugins() {
 }
 
 # main
-# load modules by layer
-load_modules $ZSH_RCD/pre
-load_plugins
-load_modules $ZSH_RCD
-load_modules $ZSH_RCD/post
+main() {
+  # load modules by layer
+  load_modules $ZSH_RCD/pre
+  load_plugins
+  load_modules $ZSH_RCD
+  load_modules $ZSH_RCD/post
 
-# echo final path
-printd "✔ path: $PATH"
-printd "${yl}⭑ ${gn}done!${rs}"
+  # echo final path
+  printd "✔ path: $PATH"
+  printd "${yl}⭑ ${gn}done!${rs}"
 
-# cleanup variables
-unset ZSH_VERBOSE
+  # cleanup variables
+  unset ZSH_VERBOSE
+}
+
+# bootstrap
+main
 

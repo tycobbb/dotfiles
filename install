@@ -91,7 +91,7 @@ done
 # install homebrew if necessary
 if ! [ -x "$(command -v brew)" ]; then
   echo -e "${green}• ${white}brew was not installed, installing${nc}"
-  ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 else
   echo -e "${green}✓ ${white}brew exists: ${gray}$(command -v brew)${nc}"
 fi
@@ -116,4 +116,4 @@ fi
 
 # install vim plugins
 echo -e "${green}• ${white}installing vim plugins${nc}"
-vim +"PlugInstall" +qall &> /dev/null
+vim +"PlugInstall" +qall
