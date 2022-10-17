@@ -8,6 +8,7 @@ alias find="fd"
 alias top="htop"
 alias du="ncdu --color dark -rr -x"
 alias ls="exa"
+alias lsx="exa --git-ignore"
 alias ps="procs"
 
 # shell
@@ -22,3 +23,8 @@ alias be="bundle exec"
 alias bs="bundle exec spring"
 alias dc=docker-compose
 alias dm=docker-machine
+
+# gamedev
+alias butler="$HOME/Library/Application\ Support/itch/apps/butler/butler"
+alias aseprite="/Applications/Aseprite.app/Contents/MacOS/aseprite"
+

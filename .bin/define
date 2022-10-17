@@ -1,0 +1,31 @@
+#!/bin/sh
+. prelude
+
+# -- parsing --
+Usage() {
+  pu "[-h] <word>"
+}
+
+while getopts ":h" option; do
+  case "${option}" in
+    h*) Usage ;;
+  esac
+done
+
+# -- main --
+Main() {
+  # validate args
+  word="$1"; shift
+  Require "$word"
+
+  # request definition
+  curl \
+    -s \
+    -X GET \
+    --header "Accept: application/json" \
+    "https://api.wordnik.com/v4/word.json/$word/definitions?limit=1&includeRelated=false&useCanonical=false&includeTags=false&api_key=$WORDNIK_API_KEY"
+  # | jq \
+  #     '.[0].text'
+}
+
+Main "$*"

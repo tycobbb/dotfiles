@@ -1,6 +1,6 @@
 [user]
-  name  = Ty Cobb
-  email = ty.cobb.m@gmail.com
+  name  = ty cobb
+  email = bin@tycobb.club
 
 [core]
   excludesfile = ~/.gitignore_global
@@ -9,11 +9,14 @@
   alias = !git config --list | grep 'alias\\.' | sed 's/alias\\.\\([^=]*\\)=\\(.*\\)/\\1\t=> \\2/' | sort
   st    = status
   lg    = log --color --no-merges
+  ap    = add -p
+  apx   = "!f() { git add -p \"**/*.$1\"; }; f"
   ci    = commit
   cim   = commit -m
   cam   = commit -a -m
   br    = branch
   dbr   = branch -d
+  rs    = restore --staged
   co    = checkout
   cbr   = checkout -b
   rb    = rebase
@@ -55,3 +58,8 @@
 [credential]
   helper = osxkeychain
 
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true

@@ -14,9 +14,13 @@ done
 
 # -- main --
 Main() {
-  # validate args
+  # parse args
   path="$1"; shift
-  Require "$path"
+  
+  # use current dir if no path 
+  if [ -z "$path" ]; then
+    path="."
+  fi
 
   # open the workspace or project
   # TODO: sort better, prompt if more than one result

@@ -13,12 +13,17 @@ if [ "$(command -v direnv)" ]; then
   eval "$(direnv hook zsh)"
 fi
 
-# rbenv
+# asdf
+if [ "$(command -v asdf)" ]; then
+  . $(brew --prefix asdf)/libexec/asdf.sh
+fi
+
+# rbenv [DEPRECATE]
 if [ "$(command -v rbenv)" ]; then
   eval "$(rbenv init - zsh)"
 fi
 
-# nvm
+# nvm [DEPRECATE]
 if [ "$(command -v nvm)" ]; then
   export NVM_DIR=~/.nvm
   source $(brew --prefix nvm)/nvm.sh

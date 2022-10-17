@@ -2,7 +2,6 @@ OPTIONS=role:Valkyrie,race:Dwarf
 
 # -- options --
 # -- options/info
-OPTIONS=showrace
 OPTIONS=showexp,time
 OPTIONS=sortloot:full
 
@@ -44,7 +43,8 @@ OPTIONS=dark_room
 OPTIONS=lit_corridor
 
 # -- options/symbols
-OPTIONS:boulder:0
+OPTIONS=showrace:false
+OPTIONS=boulder:0
 
 # -- options/names
 OPTIONS=fruit:peach

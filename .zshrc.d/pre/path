@@ -4,12 +4,12 @@ printd "➜ step: update path"
 # path directories (in priority-order)
 path_dirs=(
   $HOME/.bin
-  $HOME/.cargo/bin
   $HOME/.local/bin
+  $HOME/.deno/bin
+  $HOME/.cargo/bin
   $HOME/.luxe/bin
   $HOME/Library/Android/sdk/platform-tools
-  $HOME/Library/Python/3.7/bin
-  $HOME/Library/Application\ Support/itch/apps/butler
+  $HOME/Library/Python/3.9/bin
   /usr/local/bin
   /opt/homebrew/bin
   /usr/bin

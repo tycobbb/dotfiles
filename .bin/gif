@@ -16,14 +16,12 @@ done
 Convert() {
   ffmpeg \
     -i "$1" \
-    -s 600x400 \
-    -pix_fmt rgb8 \
-    -r 30 \
+    -filter_complex "[0:v] fps=12,scale=600:-1,split [a][b];[a] palettegen [p];[b][p] paletteuse" \
     -f gif - \
     |
     gifsicle \
       --optimize=3 \
-      --delay=3 \
+      --delay=7 \
       > \
       "$2"
 }
@@ -47,4 +45,4 @@ Main() {
   Convert "$in" "$out"
 }
 
-Main "$*"
+Main "$@"
