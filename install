@@ -21,9 +21,8 @@ declare -a exclusions=(
 home_dir="$HOME/"
 repo_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/"
 
-# -- impls --
-# -- impls/options
-usage() {
+# -- usage --
+Usage() {
   echo "usage: install [-chv]" 1>&2; exit 1;
 }
 
@@ -31,12 +30,12 @@ while getopts ":chv" option; do
   case "${option}" in
     c) clean_links=1 ;;
     v) verbose=1 ;;
-    *) usage ;;
+    *) Usage ;;
   esac
 done
 
-# -- impls/helpers
-prompt_for_skip() {
+# -- helpers --
+PromptForSkip() {
   while true; do
     read -r result
     case $result in
@@ -46,74 +45,99 @@ prompt_for_skip() {
   done
 }
 
-# -- impls/main
-# symlink all configs in this dir
-for entry in * .*; do
-  # skip any entries from the exclusions array
-  if [[ ${exclusions[*]} =~ $entry ]]; then
-    continue
-  fi
+# -- commands --
+InstallDir() {
+  # get dir
+  dir="$1"
+  shift
 
-  home_path=$home_dir$entry
-  repo_path=$repo_dir$entry
-
-  # if cleaning, check if the item is a symlink, and if so remove it
-  if [ -n "${clean_links}" ]; then
-    if [ -L "$home_path" ]; then
-      echo -e "${red}✗ ${white}removing link: ${gray}$home_path${nc}"
-      rm -r "$home_path"
-    fi
-    continue
-  fi
-
-  # otherwise, we're linking
-  if [ -L "$home_path" ]; then
-    echo -e "${green}✓ ${white}link exists: ${gray}$home_path${nc}"
-    continue
-  fi
-
-  # if there's a file there there that isn't a link, try to back it up
-  if [ -e "$home_path" ]; then
-    echo -e "${red}✗ ${white}file exists: ${gray}$home_path${white}. (b)ackup or (s)kip?${nc}"
-    if [ "$(prompt_for_skip)" == "1" ]; then
+  # symlink all configs in this dir
+  for entry in "$dir"* "$dir".*; do
+    # skip any entries from the exclusions array
+    if [[ ${exclusions[*]} =~ $entry ]]; then
       continue
-    else
-      mv -f "$home_path" "$home_path.bak"
     fi
+
+    home_path=$home_dir$entry
+    repo_path=$repo_dir$entry
+
+    # if cleaning, check if the item is a symlink, and if so remove it
+    if [ -n "${clean_links}" ]; then
+      if [ -L "$home_path" ]; then
+        echo -e "${red}✗ ${white}removing link: ${gray}$home_path${nc}"
+        rm -r "$home_path"
+      fi
+      continue
+    fi
+
+    # if the link already exists, skip this one
+    if [ -L "$home_path" ]; then
+      echo -e "${green}✓ ${white}link exists: ${gray}$home_path${nc}"
+      continue
+    fi
+
+    # if this is the .config directory, just create it
+    if [ "$entry" == ".config" ]; then
+      if [ ! -d "$home_path" ]; then
+        echo -e "${green}• ${white}create dir:  ${gray}$home_path${nc}"
+        mkdir -p "$home_path"
+      fi
+      continue
+    fi
+
+    # if there's a file there there that isn't a link, try to back it up
+    if [ -e "$home_path" ]; then
+      echo -e "${red}✗ ${white}file exists: ${gray}$home_path${white}. (b)ackup or (s)kip?${nc}"
+      if [ "$(PromptForSkip)" == "1" ]; then
+        continue
+      else
+        mv -f "$home_path" "$home_path.bak"
+      fi
+    else
+      echo -e "${green}• ${white}file did not exist, linking: ${gray}$home_path${nc}"
+    fi
+
+    # and then create the symlink
+    echo -e "${green}• ${white}create link: ${gray}$home_path${nc}"
+    ln -sF "$repo_path" "$home_path"
+  done
+}
+
+# -- main --
+Main() {
+  # install all links
+  InstallDir ""
+  InstallDir ".config/"
+
+  # install homebrew if necessary
+  if ! [ -x "$(command -v brew)" ]; then
+    echo -e "${green}• ${white}brew was not installed, installing${nc}"
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
   else
-    echo -e "${green}• ${white}file did not exist, linking: ${gray}$home_path${nc}"
+    echo -e "${green}✓ ${white}brew exists: ${gray}$(command -v brew)${nc}"
   fi
 
-  # and then create the symlink
-  ln -sF "$repo_path" "$home_path"
-done
+  # install brew packages
+  echo -e "${green}• ${white}installing brew packages${nc}"
+  if [ -n "${verbose}" ]; then
+    brew bundle --global -v
+  else
+    brew bundle --global
+  fi
 
-# install homebrew if necessary
-if ! [ -x "$(command -v brew)" ]; then
-  echo -e "${green}• ${white}brew was not installed, installing${nc}"
-  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-else
-  echo -e "${green}✓ ${white}brew exists: ${gray}$(command -v brew)${nc}"
-fi
+  # install vimplug
+  plug_path=./.vim/autoload/plug.vim
+  if [ -f "$plug_path" ]; then
+    echo -e "${green}✓ ${white}vim-plug exists: ${gray}$home_path${nc}"
+  else
+    echo -e "${green}• ${white}installing vim-plug${nc}"
+    curl -fLo "$plug_path" --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  fi
 
-# install brew packages
-echo -e "${green}• ${white}installing brew packages${nc}"
+  # install vim plugins
+  echo -e "${green}• ${white}installing vim plugins${nc}"
+  vim +"PlugInstall" +qall
+}
 
-if [ -n "${verbose}" ]; then
-  brew bundle --global -v
-else
-  brew bundle --global
-fi
-
-# install vimplug
-plug_path=./.vim/autoload/plug.vim
-if [ -f "$plug_path" ]; then
-  echo -e "${green}✓ ${white}vim-plug exists: ${gray}$home_path${nc}"
-else
-  echo -e "${green}• ${white}installing vim-plug${nc}"
-  curl -fLo "$plug_path" --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-fi
-
-# install vim plugins
-echo -e "${green}• ${white}installing vim plugins${nc}"
-vim +"PlugInstall" +qall 
+# -- bootstrap --
+Main "$*"

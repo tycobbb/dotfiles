@@ -1,0 +1,133 @@
+add_newline = false
+
+# -- core --
+[line_break]
+disabled = true
+
+[character]
+success_symbol = "[>](bold green)"
+error_symbol = "[>](bold red)"
+
+[directory]
+truncation_length = 1
+read_only = ""
+
+# -- git --
+[git_branch]
+disabled = true
+
+[git_commit]
+disabled = true
+
+[git_state]
+disabled = true
+
+# -- defaults-neue --
+[aws]
+disabled = true
+
+[battery]
+disabled = true
+
+[buf]
+disabled = true
+
+[c]
+disabled = true
+
+[cmake]
+disabled = true
+
+[conda]
+disabled = true
+
+[crystal]
+disabled = true
+
+[dart]
+disabled = true
+
+[deno]
+disabled = true
+
+[docker_context]
+disabled = true
+
+[dotnet]
+disabled = true
+
+[elixir]
+disabled = true
+
+[elm]
+disabled = true
+
+[erlang]
+disabled = true
+
+[gcloud]
+disabled = true
+
+[golang]
+disabled = true
+
+[helm]
+disabled = true
+
+[java]
+disabled = true
+
+[julia]
+disabled = true
+
+[lua]
+disabled = true
+
+[nim]
+disabled = true
+
+[nix_shell]
+disabled = true
+
+[nodejs]
+disabled = true
+
+[package]
+disabled = true
+
+[ocaml]
+disabled = true
+
+[openstack]
+disabled = true
+
+[perl]
+disabled = true
+
+[php]
+disabled = true
+
+[python]
+disabled = true
+
+[purescript]
+disabled = true
+
+[ruby]
+disabled = true
+
+[rust]
+disabled = true
+
+[singularity]
+disabled = true
+
+[swift]
+disabled = true
+
+[terraform]
+disabled = true
+
+[zig]
+disabled = true
+
