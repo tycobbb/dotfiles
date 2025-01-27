@@ -91,9 +91,9 @@ Main() {
     ListNotes
   elif [ "$raw" = "open" ]; then
     OpenDir
-  else 
+  else
     OpenNote "$raw"
   fi
 }
 
-Main "$*"
+Main "$@"

@@ -1,4 +1,4 @@
-.zshrc.d/secrets
+.zshrc.d/pre/secrets
 .vim/autoload/plug.vim
 .vim/plugged
 .vim/.netrwhist

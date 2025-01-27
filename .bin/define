@@ -28,4 +28,4 @@ Main() {
   #     '.[0].text'
 }
 
-Main "$*"
+Main "$@"

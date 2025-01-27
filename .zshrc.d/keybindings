@@ -16,5 +16,8 @@ bindkey '^h' backward-delete-char
 # ctrl-w removes word backwards
 bindkey '^w' backward-kill-word
 
+# ctrl-k removes line
+bindkey '^k' kill-line
+
 # ctrl-r starts searching history backward
 bindkey '^r' history-incremental-search-backward

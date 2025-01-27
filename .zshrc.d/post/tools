@@ -1,6 +1,9 @@
 #!/bin/zsh
 
-# get brew prefix
+# brew
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
+# the brew path
 BREW=$(brew --prefix)
 
 # starship
@@ -45,7 +48,7 @@ fi
 # fzf/auto-completion
 [[ $- == *i* ]] && source "$BREW/opt/fzf/shell/completion.zsh" 2> /dev/null
 
-# fzf/key bindings
+# fzf/key-bindings
 source "$BREW/opt/fzf/shell/key-bindings.zsh"
 
 # fzf/shortcuts

@@ -17,7 +17,7 @@ OPTIONS=lootabc
 # -- options/autopickup
 OPTIONS=autopickup
 OPTIONS=pickup_types:$!/="+?%
-autopickup_exception="> *corpse"#
+autopickup_exception="> *corpse"
 
 # -- options/auto
 OPTIONS=autodig

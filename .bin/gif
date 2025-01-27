@@ -30,7 +30,6 @@ Convert() {
 Main() {
   # require input path
   in="$1"; shift
-  Require "$in"
   RequireExists "$in"
 
   # create a same-named gif in this dir if out path is unspecified

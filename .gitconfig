@@ -12,15 +12,17 @@
   ap    = add -p
   apx   = "!f() { git add -p \"**/*.$1\"; }; f"
   ci    = commit
+  cm    = commit
   cim   = commit -m
   cam   = commit -a -m
   br    = branch
   dbr   = branch -d
   rs    = restore --staged
   co    = checkout
+  cob   = checkout -b
   cbr   = checkout -b
   rb    = rebase
-  prune = remote prune
+  prune = "!git remote prune origin && git branch -vv | awk '$4 == \"gone]\" { print $1 }' | xargs git branch -D"
   plo   = "!b=$(git br -vv | grep \"[*].*\\[.*\\]\" | cut -d ' ' -f 2); git pull origin $b"
   pso   = "!b=$(git br -vv | grep \"[*].*\\[.*\\]\" | cut -d ' ' -f 2); git push origin $b"
   psu   = "!b=$(git br | grep '*' | cut -c3-); git push origin -u $b"
@@ -45,7 +47,7 @@
   defaultBranch = main
 
 [push]
-  default = nothing
+  default = upstream
 
 [pull]
   rebase = false

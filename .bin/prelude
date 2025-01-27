@@ -4,8 +4,8 @@
 D="$HOME/Dotfiles/.bin"
 
 # -- includes --
-# TODO: directives unnecessary @ v0.7.2, https://github.com/koalaman/shellcheck/wiki/SC1090
 # shellcheck source=./core/ui.sh
 . "$D/core/ui.sh"
+
 # shellcheck source=./core/ui.sh
 . "$D/core/parse.sh"

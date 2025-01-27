@@ -16,8 +16,8 @@ done
 Main() {
   # parse args
   path="$1"; shift
-  
-  # use current dir if no path 
+
+  # use current dir if no path
   if [ -z "$path" ]; then
     path="."
   fi
@@ -30,4 +30,4 @@ Main() {
     | xargs open
 }
 
-Main "$*"
+Main "$@"

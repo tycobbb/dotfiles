@@ -9,6 +9,10 @@ export PGDATA=/usr/local/var/postgres
 # android
 export ANDROID_SDK_ROOT=~/Library/Android/sdk
 
+# dotnet
+export DOTNET_ROOT="/opt/homebrew/opt/dotnet/libexec"
+export DOTNET_CLI_TELEMETRY_OPTOUT=1
+
 # git-duet
 export GIT_DUET_CO_AUTHORED_BY=1
 

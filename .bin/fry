@@ -1,0 +1,52 @@
+#!/bin/sh
+. prelude
+
+# -- parsing --
+Usage() {
+  pu "[-wh] <in> <out>"
+}
+
+while getopts ":hw:" option; do
+  case "${option}" in
+    w) width=${OPTARG} ;;
+    h*) Usage ;;
+  esac
+done
+
+shift $((OPTIND-1))
+
+# -- main --
+Main() {
+  # validate args
+  in="$1"; shift
+  RequireExists "$in"
+
+  out="$1"; shift
+  Require "$out"
+
+  # build opts
+  opts=""
+  if [ -n "$width" ]; then
+    opts="${opts}-resize ${width}x "
+  fi
+
+  echo "$opts"
+
+  # fry image
+  magick \
+    "$in" \
+    -strip \
+    -interlace Plane \
+    -remap netscape: \
+    -quality 50% \
+    -transparent white \
+    -resize 30x \
+    "$out"
+
+  # open it
+  open "$out"
+}
+
+Main "$@"
+
+

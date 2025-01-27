@@ -53,4 +53,4 @@ Main() {
   ps "created intrument in $dir"
 }
 
-Main "$*"
+Main "$@"

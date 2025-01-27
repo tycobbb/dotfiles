@@ -27,4 +27,4 @@ Main() {
   open "$file" -a "/Applications/iA Writer.app"
 }
 
-Main "$*"
+Main "$@"

@@ -20,11 +20,16 @@ path_dirs=(
   /sbin
 )
 
-# add
+# build path
 PATH="$path_dirs[1]"
 for path_dir in ${path_dirs:1}; do
   PATH="$PATH:$path_dir"
 done
+
+# add path helper paths
+if [ -x /usr/libexec/path_helper ]; then
+  eval `/usr/libexec/path_helper -s`
+fi
 
 printd "✔ path: $PATH"
 

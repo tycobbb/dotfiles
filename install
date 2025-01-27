@@ -11,6 +11,8 @@ gray="\033[0;37m"
 declare -a exclusions=(
   "."
   ".."
+  ".config/."
+  ".conifg/.."
   ".git"
   ".gitignore"
   "install"

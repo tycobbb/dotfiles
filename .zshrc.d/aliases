@@ -7,8 +7,8 @@ alias cat="bat"
 alias find="fd"
 alias top="htop"
 alias du="ncdu --color dark -rr -x"
-alias ls="exa"
-alias lsx="exa --git-ignore"
+alias ls="eza"
+alias lsx="eza --git-ignore"
 alias ps="procs"
 
 # shell

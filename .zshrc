@@ -43,6 +43,7 @@ load_plugins() {
   antigen bundle command-not-found
   antigen bundle git
   antigen bundle gitfast
+  antigen bundle wfxr/forgit
 
   antigen bundle zsh-users/zsh-completions
   antigen bundle zsh-users/zsh-autosuggestions

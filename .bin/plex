@@ -17,4 +17,4 @@ Main() {
   ssh "plex@$PLEX_IP"
 }
 
-Main "$*"
+Main "$@"

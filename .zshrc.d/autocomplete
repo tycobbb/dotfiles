@@ -1,2 +1,12 @@
 #!/bin/zsh
+
+# what is this for again?
 COMPLETION_WAITING_DOTS="true"
+
+# fzf
+export FZF_COMPLETION_OPTS="--height=100%"
+
+# symfony
+if command -v symfony &>/dev/null; then
+  eval "$(symfony completion)"
+fi
